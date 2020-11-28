@@ -1,0 +1,186 @@
+<div class="row bg-title">
+  <div class="col-lg-10">
+      <h4 class="page-title">Materia</h4>
+      <ol class="breadcrumb">
+          <li><a href="#">Maestro</a></li>
+          <li><a href="#" (click)="goBack()">Cursos</a></li>
+          <li class="active">{{title}}</li>
+      </ol>
+      
+  </div>
+  <div class="col-lg-2">
+    
+      <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+
+      <div class="table-responsive">
+          <div class="box-body">
+            
+              <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Data Table</h3>
+                    <div class="row">
+                      <div class="col-md-4 text-center">
+                      </div>
+                      <div class="col-md-3 col-xs-offset-5">
+                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                        </div>   
+                      
+                    </div> 
+                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+                             [mfRowsOnPage]="rowsOnPage">
+                        <thead>
+                            <tr>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="name">Nombre</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="description">Descripcion</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="homework_note">Fecha</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="homework_note">Valor</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="student_note">Nota</mfDefaultSorter></th>
+                                <th style="width:20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of mf.data">
+                                <td>{{((data.name!=null)?data.name:'')}}</td>
+                                <td>{{((data.description!=null)?data.description:'')}}</td>
+                                <td>{{((data.date_end!=null)?data.date_end:'')}}</td>
+                                <td>{{((data.homework_note!=null)?data.homework_note:'')}}</td>
+                                <td>{{((data.student_note!=null)?data.student_note:'')}}</td>
+                                <td>
+
+                                 <button type="button" class="btn btn-warning circle" data-toggle="modal" data-target="#editModal" (click)="cargarSingle(data.id,idSubject)" style="cursor:pointer;"><i class="fa fa-table"></i> Detalle</button>
+                                 
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                            </tfoot>
+                    </table>
+                </div>
+            </div> 
+            
+          </div>
+      </div>
+  </div>
+  <div class="card-footer small text-muted">
+      Updated yesterday at 11:59 PM
+  </div>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
+
+<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Edicion de datos</h4>
+          </div>
+          <div class="modal-body" *ngIf="selectedData">
+              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="name">Nombre</label>
+                      <input type="text" class="form-control" id="name" name="name" required disabled
+                              ngModel #name="ngModel" [(ngModel)]="selectedData.name" >
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="name.errors.required">
+                                El Nombre es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="description">Descripcion</label>
+                      <input type="text" class="form-control" id="description" name="description" required disabled
+                              ngModel #description="ngModel" [(ngModel)]="selectedData.description" >
+                        <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="description.errors.required">
+                                El Apellido es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="homework_note">Valor</label>
+                        <input type="text" class="form-control" id="homework_note" name="homework_note" disabled
+                                ngModel #homework_note="ngModel" [(ngModel)]="selectedData.homework_note">
+                          <div *ngIf="homework_note.invalid && (homework_note.dirty || homework_note.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="homework_note.errors.required">
+                                  El Telefono es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="date_end">Fecha de Entrega</label>
+                        <input type="date" class="form-control" id="date_end" name="date_end" disabled
+                                ngModel #date_end="ngModel" [(ngModel)]="selectedData.date_end">
+                          <div *ngIf="date_end.invalid && (date_end.dirty || date_end.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="date_end.errors.required">
+                                  El Celular es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div class="form-group col-xs-12 m-b-12">
+                        <label for="descriptionUser">Descripcion</label>
+                        <input type="text" class="form-control" id="descriptionUser" name="descriptionUser"
+                                ngModel #descriptionUser="ngModel" [(ngModel)]="selectedData.file2">
+                          <div *ngIf="descriptionUser.invalid && (descriptionUser.dirty || descriptionUser.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="descriptionUser.errors.required">
+                                  La Descripcion es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div *ngIf="selectedData.file!=null" class="form-group col-xs-6 col-xs-offset-3">
+                      <button type="button" class="close" (click)="deleteHomework(selectedData.id)" aria-hidden="true">×</button>
+                    <a href="{{selectedData.file}}" id="imgAvatar" alt="Avatar"><img src="https://image.flaticon.com/icons/svg/149/149335.svg" style="width:50px;height:50px;"/> {{selectedData.name}} </a>
+                  </div>
+              
+              <div *ngIf="selectedData.file==null" class="form-group col-xs-6 col-xs-offset-3">
+                <input type="file" id="avatar" (change)="subirImagenes($event,EditForm.value,'avatar')"/>
+                <progress value="0" max="100" id="barra_de_progreso"></progress>
+            </div>
+                    <input type="hidden" class="form-control" id="id" name="id" required
+                            ngModel #id="ngModel" [(ngModel)]="selectedData.id">
+                    
+                  <div class="form-group col-xs-12 text-right m-b-15 hidden">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+                  </div>
+              </form>
+              
+          </div>
+          <div class="modal-footer" style="border:none;">
+             
+          </div>
+      </div>
+  </div>
+  
+  
+  
+</div>
+
+
+<div class="modal fade" id="Loading">
+    <div class="modal-dialog">
+      <div class="text-center" style="margin-top:50%;">
+  <app-loader></app-loader>
+      </div>
+    </div>
+  </div>

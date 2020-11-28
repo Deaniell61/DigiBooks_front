@@ -1,0 +1,60 @@
+<div class="h-100 p-t-5 fondo">
+  <div class="row h-100">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex h-100">
+      <div class="login-box m-auto">
+        <div class="white-box">
+          <form id="login-form" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" class="form-horizontal m-t-20">
+            <div class="form-group ">
+              <div class="col-xs-12">
+                <h3>Recuperacion de contraseña</h3>
+                <p class="text-muted">Se le enviara un correo electronico con una nueva contraseña para que pueda
+                  ingresar.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-12">
+                <label for="username" class="sr-only">Usuario</label>
+                <div class="input-group">
+                  <div class=" addon-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="text" class="form-control btn-rounded" id="username" name="username" ngModel
+                    #username="ngModel" placeholder="Usuario" autofocus>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center m-t-40">
+              <div class="col-xs-12">
+                <button class="btn btn-primary btn-rounded btn-md btn-block text-uppercase waves-effect waves-light"
+                  type="submit">Enviar</button>
+              </div>
+              <div class="col-md-12 col-xs-12 m-t-5 text-center"><a [routerLink]="[ './../login' ]" class="text-dark"><i
+                class="fa fa-unlock m-r-5"></i> Ingresar</a></div>
+            </div>
+            <simple-notifications [options]="options"></simple-notifications>
+            <div class="toast" id="toast"></div>
+          </form>
+          <footer class="footer text-center">
+            <div class="social">
+              <a href="https://gt.linkedin.com/company/foxylabs" target="_blank" class="btn  btn-linkedin"
+                data-toggle="tooltip" data-title="Visita nuestro LinkedIn"> <i aria-hidden="true"
+                  class="fa fa-linkedin"></i> </a>
+              <a href="https://www.facebook.com/foxylabs" target="_blank" class="btn  btn-facebook"
+                data-toggle="tooltip" data-title="Visita nuestro Facebook"> <i aria-hidden="true"
+                  class="fa fa-facebook"></i> </a>
+              <a href="https://foxylabs.gt" target="_blank" class="btn btn-googleplus" data-toggle="tooltip"
+                data-title="Visita nuestra pagina web"> <i aria-hidden="true" class="fa fa-edge"></i> </a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="Loading">
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <loaders-css [loader]="'line-scale'" [loaderClass]="'loader1'"></loaders-css>
+    </div>
+  </div>
+</div>

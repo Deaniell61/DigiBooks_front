@@ -1,0 +1,341 @@
+<div class="row bg-title">
+  <div class="col-lg-10">
+      <h4 class="page-title">Materia</h4>
+      <ol class="breadcrumb">
+          <li><a href="#">Maestro</a></li>
+          <li><a href="#" (click)="goBack()">Cursos</a></li>
+          <li class="active">{{title}}</li>
+      </ol>
+      
+  </div>
+  <div class="col-lg-2">
+    
+      <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+
+      <div class="table-responsive">
+          <div class="box-body">
+            
+              <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Data Table</h3>
+                    <div class="row">
+                      <div class="col-md-4 text-center">
+                        <!-- <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Tarea</button> -->
+                      </div>
+                      <div class="col-md-3 col-xs-offset-5">
+                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                        </div>   
+                      
+                    </div> 
+                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+                             [mfRowsOnPage]="rowsOnPage">
+                        <thead>
+                            <tr>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="students.firstname">Nombre</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="students.address">Direccion</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="students.phone">Telefono</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="students.cellphone">Celular</mfDefaultSorter></th>
+                                <th style="width:20%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of mf.data">
+                                <td>{{((data.students.firstname!=null)?data.students.firstname+' ':'')+((data.students.lastname!=null)?data.students.lastname:'')}}</td>
+                                <td>{{((data.students.address!=null)?data.students.address:'')}}</td>
+                                <td>{{((data.students.phone!=null)?data.students.phone:'')}}</td>
+                                <td>{{((data.students.cellphone!=null)?data.students.cellphone:'')}}</td>
+                                <td>
+
+                                 <a href="{{url}}" target="_blank" class="btn btn-warning circle"  (click)="cargarReporte(data.students.id,idSubject)" style="cursor:pointer;"><i class="fa fa-print"></i> Imprimir Detalle</a>
+                                  
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                            </tfoot>
+                    </table>
+                </div>
+            </div> 
+            
+          </div>
+      </div>
+  </div>
+  <div class="card-footer small text-muted">
+      Updated yesterday at 11:59 PM
+  </div>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
+
+<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Ingreso de datos</h4>
+          </div>
+          <div class="modal-body">
+              <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="childsInsert(InsertForm.value)">
+                  <div class="form-group col-xs-12 m-b-15">
+                      <label for="name">Nombre</label>
+                      <input type="text" class="form-control" id="name" name="name" required
+                              ngModel #name="ngModel" >
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="name.errors.required">
+                                El Nombre es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-12 m-b-15">
+                      <label for="description">Descripcion</label>
+                      <input type="text" class="form-control" id="description" name="description" required
+                              ngModel #description="ngModel" >
+                        <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="description.errors.required">
+                                La Descripcion es invalido
+                            </small>
+                        </div>
+                  </div> 
+
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="homework_note">Nota</label>
+                        <input type="text" class="form-control" id="homework_note" name="homework_note" required
+                                ngModel #homework_note="ngModel" >
+                          <div *ngIf="homework_note.invalid && (homework_note.dirty || homework_note.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="homework_note.errors.required">
+                                  La Nota es invalido
+                              </small>
+                          </div>
+                  </div>
+
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="date_end">Fecha de Fin</label>
+                        <input type="date" class="form-control" id="date_end" name="date_end" required
+                                ngModel #date_end="ngModel" [(ngModel)]="date">
+                          <div *ngIf="date_end.invalid && (date_end.dirty || date_end.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="date_end.errors.required">
+                                  La Fecha de Fin es invalido
+                              </small>
+                          </div>
+                  </div>
+                    
+                  <div class="form-group col-xs-12 text-right m-b-15">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+                  </div>
+              </form>
+              
+          </div>
+          <div class="modal-footer" style="border:none;">
+             
+          </div>
+      </div>
+  </div>
+  
+  
+  
+</div>
+
+<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Edicion de datos</h4>
+          </div>
+          <div class="modal-body" *ngIf="selectedData">
+              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="firstname">Nombre</label>
+                      <input type="text" class="form-control" id="firstname" name="firstname" required disabled
+                              ngModel #firstname="ngModel" [(ngModel)]="selectedData.students.firstname" >
+                        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="firstname.errors.required">
+                                El Nombre es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="lastname">Apellido</label>
+                      <input type="text" class="form-control" id="lastname" name="lastname" required disabled
+                              ngModel #lastname="ngModel" [(ngModel)]="selectedData.students.lastname" >
+                        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="lastname.errors.required">
+                                El Apellido es invalido
+                            </small>
+                        </div>
+                  </div> 
+
+                  <div class="form-group col-xs-12 m-b-15">
+                        <label for="address">Direccion</label>
+                        <input type="text" class="form-control" id="address" name="address" required disabled
+                                ngModel #address="ngModel" [(ngModel)]="selectedData.students.address">
+                          <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="address.errors.required">
+                                  La Direccion es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="phone">Telefono</label>
+                        <input type="text" class="form-control" id="phone" name="phone" disabled
+                                ngModel #phone="ngModel" [(ngModel)]="selectedData.students.phone">
+                          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="phone.errors.required">
+                                  El Telefono es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="cellphone">Celular</label>
+                        <input type="text" class="form-control" id="cellphone" name="cellphone" disabled
+                                ngModel #cellphone="ngModel" [(ngModel)]="selectedData.students.cellphone">
+                          <div *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="cellphone.errors.required">
+                                  El Celular es invalido
+                              </small>
+                          </div>
+                  </div>
+
+                  <div class="form-group col-xs-12 m-b-12">
+                        <label for="ver">Ver</label>
+                        <select class="form-control" id="ver" name="ver"
+                                ngModel #ver="ngModel" [(ngModel)]="view">
+                                <option value="1">Asistencias</option>
+                                <option value="2">Tareas</option>
+                                </select>
+                          <div *ngIf="ver.invalid && (ver.dirty || ver.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="ver.errors.required">
+                                  El Celular es invalido
+                              </small>
+                          </div>
+                  </div>
+                  
+                  <table *ngIf="selectedData.assistance && view==1" class="table table-hover table-responsive" [mfData]="selectedData.assistance | filter : search" #mf="mfDataTable"
+                             [mfRowsOnPage]="rowsOnPage">
+                    <thead>
+                        <tr>
+                            <th style="width:20%;">
+                                <mfDefaultSorter by="assistance_date">Fecha</mfDefaultSorter></th>
+                            <th style="width:20%;">
+                                <mfDefaultSorter by="assistance">Asistio</mfDefaultSorter></th>
+                            <th style="width:15%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let data of mf.data">
+                            <td>{{((data.assistance_date!=null)?data.assistance_date:'')}}</td>
+                          <td>{{((data.assistance!=0)?'Si Asistio':'No Asistio')}}</td>
+                          <td>
+
+                            <button type="button" class="btn btn-success btn-circle btn-lg" (click)='childUpdate(data.id,true)' style="cursor:pointer;"><i class="fa fa-check"></i> </button>
+                            <button type="button" class="btn btn-danger  btn-circle btn-lg" (click)="childUpdate(data.id,false)" style="cursor:pointer;"><i class="fa fa-times"></i> </button>
+                            
+                          </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                          <td colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                          </td>
+                      </tr>
+                      </tfoot>
+                </table>
+                <table *ngIf="selectedData.homework && view==2" class="table table-hover table-responsive" [mfData]="selectedData.homework | filter : search" #mf="mfDataTable"
+                             [mfRowsOnPage]="rowsOnPage">
+                    <thead>
+                        <tr>
+                            <th style="width:20%;">
+                                <mfDefaultSorter by="assistance_date">Nombre</mfDefaultSorter></th>
+                            <th style="width:20%;">
+                                <mfDefaultSorter by="assistance">Descripcion</mfDefaultSorter></th>
+                            <th style="width:10%;">
+                                <mfDefaultSorter by="assistance">Valor</mfDefaultSorter></th>
+                            <th style="width:15%;">
+                                <mfDefaultSorter by="assistance">Fecha de Cierre</mfDefaultSorter></th>
+                            <th style="width:20%;">
+                                <mfDefaultSorter by="assistance">Nota Obtenida</mfDefaultSorter></th>
+                            <th style="width:25%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let data of mf.data">
+                          <td>{{((data.name!=null)?data.name:'')}}</td>
+                          <td>{{((data.description!=null)?data.description:'')}}</td>
+                          <td>{{((data.homework_note!=null)?data.homework_note:'')}}</td>
+                          <td>{{((data.date_end!=null)?data.date_end:'')}}</td>
+                          <td>
+                            <div class="input-group m-t-10">
+                                <input type="number" class="form-control" id="{{'nota'+data.id}}" [(ngModel)]="data.student_note" [ngModelOptions]="{standalone: true}">
+                                <span class="input-group-addon"><i class="fa fa-percent"></i></span> 
+                            </div>
+                          <td>
+                            
+                            <button type="button" class="btn btn-success btn-circle btn-lg" (click)='secondChildUpdate(data.id)' style="cursor:pointer;"><i class="fa fa-check"></i> </button>
+                            
+                          </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                          <td colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                          </td>
+                      </tr>
+                      </tfoot>
+                </table>
+                 
+                  
+                    <input type="hidden" class="form-control" id="id" name="id" required
+                            ngModel #id="ngModel" >
+                    
+                  <div class="form-group col-xs-12 text-right m-b-15 hidden">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+                  </div>
+              </form>
+              
+          </div>
+          <div class="modal-footer" style="border:none;">
+             
+          </div>
+      </div>
+  </div>
+  
+  
+  
+</div>
+
+
+<div class="modal fade" id="Loading">
+    <div class="modal-dialog">
+      <div class="text-center" style="margin-top:50%;">
+  <app-loader></app-loader>
+      </div>
+    </div>
+  </div>

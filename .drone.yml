@@ -1,0 +1,9 @@
+pipeline:
+  publish-api-docker:
+    image: plugins/docker:latest
+    username: foxylabsgt
+    password: dockerfoxylabs2017
+    email: info@foxylabs.gt
+    repo: foxylabs/admincolegios
+    tags: latest
+    dockerfile: ./Dockerfile

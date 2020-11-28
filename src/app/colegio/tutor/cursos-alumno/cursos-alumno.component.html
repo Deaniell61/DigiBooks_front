@@ -1,0 +1,71 @@
+<div class="row bg-title">
+  <div class="col-lg-10">
+      <h4 class="page-title">Cursos</h4>
+      <ol class="breadcrumb">
+          <li><a href="#">Tutor</a></li>
+          <li><a href="#" (click)="goBack()">Alumnos</a></li>
+          <li class="active">Cursos</li>
+          
+      </ol>
+  </div>
+  <div class="col-lg-2">
+    
+      <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+      <div class="table-responsive">
+          <div class="box-body">
+              <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Data Table</h3>
+                    <div class="row">
+                      <div class="col-md-3 "  *ngFor="let Data of Table">
+                            
+                       <div class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../../tareas' , Data.subjects.id , Data.subjects.subjects.name]">
+                            <div class="card-body">
+                              <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                                <h4 class="card-title"  style="margin-bottom:0px">
+                                  {{((Data.subjects.subjects.name!=null)?Data.subjects.subjects.name:'')}}
+                                </h4>
+                                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                                    {{((Data.subjects.grades.cycles_studying_days.cycles.description!=null)?Data.subjects.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
+                                    {{((Data.subjects.grades.cycles_studying_days.studying_days.description!=null)?Data.subjects.grades.cycles_studying_days.studying_days.description:'')}}   
+                                </h6>
+                            </div>
+                              <p class="card-text">
+                                  {{((Data.subjects.grades.grades.name!=null)?Data.subjects.grades.grades.name:'')}}
+                                </p>
+                                <p class="card-text">
+                                {{((Data.subjects.subjects.comment!=null)?Data.subjects.subjects.comment:'')}}                                
+                                  </p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                {{((Data.subjects.subjects.description!=null)?Data.subjects.subjects.description:'')}} 
+                              </div>
+                          </div>
+                      </div>
+                    </div> 
+                </div>
+            </div> 
+          </div>
+      </div>
+  </div>
+
+  <div class="card-footer small text-muted">
+      Updated yesterday at 11:59 PM
+  </div>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
+
+
+<div class="modal fade" id="Loading">
+    <div class="modal-dialog">
+      <div class="text-center" style="margin-top:50%;">
+  <app-loader></app-loader>
+      </div>
+    </div>
+  </div>
+  

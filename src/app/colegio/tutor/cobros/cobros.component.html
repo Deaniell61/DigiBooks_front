@@ -1,0 +1,244 @@
+<div class="row bg-title">
+  <div class="col-lg-10">
+      <h4 class="page-title">Cobros</h4>
+      <ol class="breadcrumb">
+          <li><a href="#">Tutor</a></li>
+          <li><a href="#" (click)="goBack()">Alumnos</a></li>
+          <li><a href="#">Cobros</a></li>
+          <li class="active">{{title}}</li>
+      </ol>
+      
+  </div>
+  <div class="col-lg-2">
+    
+      <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+
+      <div class="table-responsive">
+          <div class="box-body">
+            
+              <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Data Table</h3>
+                    <div class="row">
+                      <div class="col-md-4 text-center">
+                      </div>
+                      <div class="col-md-3 col-xs-offset-5">
+                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                        </div>   
+                      
+                    </div> 
+                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+                             [mfRowsOnPage]="rowsOnPage">
+                        <thead>
+                            <tr>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="tuition">Tipo</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="charge_limit">Fecha Limite</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="quantity">Cantidad</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="increase">Incremento</mfDefaultSorter></th>
+                                <th style="width:20%;">
+                                    <mfDefaultSorter by="state">Estado</mfDefaultSorter></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of mf.data">
+                                <td>{{((data.tuition==0)?((data.inscription==0)?data.description:'Inscripcion'):'Matricula')}}</td>
+                                <td>{{((data.charge_limit!=null)?data.charge_limit:'')}}</td>
+                                <td>{{((data.quantity!=null)?data.quantity:'')}}</td>
+                                <td>{{((data.increase!=null)?data.increase:'')}}</td>
+                                <td *ngIf="data.state==1"> <span class="text-danger alert alert-warning">Por Pagar</span></td>
+                                <td *ngIf="data.state==0"> <span class="text-warning alert alert-success">Pagado</span></td>
+                               
+                            </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                            </tfoot>
+                    </table>
+                </div>
+            </div> 
+            
+          </div>
+      </div>
+  </div>
+  <div class="card-footer small text-muted">
+      Updated yesterday at 11:59 PM
+  </div>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
+
+<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Edicion de datos</h4>
+          </div>
+          <div class="modal-body" *ngIf="selectedData">
+              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="name">Nombre</label>
+                      <input type="text" class="form-control" id="name" name="name" required disabled
+                              ngModel #name="ngModel" [(ngModel)]="selectedData.name" >
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="name.errors.required">
+                                El Nombre es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-6 m-b-6">
+                      <label for="description">Descripcion</label>
+                      <input type="text" class="form-control" id="description" name="description" required disabled
+                              ngModel #description="ngModel" [(ngModel)]="selectedData.description" >
+                        <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="alert alert-danger" role="alert">
+                            <small *ngIf="description.errors.required">
+                                El Apellido es invalido
+                            </small>
+                        </div>
+                  </div> 
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="homework_note">Nota</label>
+                        <input type="text" class="form-control" id="homework_note" name="homework_note" disabled
+                                ngModel #homework_note="ngModel" [(ngModel)]="selectedData.homework_note">
+                          <div *ngIf="homework_note.invalid && (homework_note.dirty || homework_note.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="homework_note.errors.required">
+                                  El Telefono es invalido
+                              </small>
+                          </div>
+                  </div>
+                  <div class="form-group col-xs-6 m-b-6">
+                        <label for="date_end">Fecha de Entrega</label>
+                        <input type="date" class="form-control" id="date_end" name="date_end" disabled
+                                ngModel #date_end="ngModel" [(ngModel)]="selectedData.date_end">
+                          <div *ngIf="date_end.invalid && (date_end.dirty || date_end.touched)"
+                                class="alert alert-danger" role="alert">
+                              <small *ngIf="date_end.errors.required">
+                                  El Celular es invalido
+                              </small>
+                          </div>
+                  </div>
+
+                  <div *ngIf="selectedData.file==null || selectedData.file2==null" class="form-group col-xs-6 col-xs-offset-3">
+                        <div ng2FileDrop
+                            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                            (fileOver)="fileOverBase($event)"
+                            [uploader]="uploader"
+                            class="my-drop-zone p-t-20 p-b-20 text-center">
+                            <i class="fa fa-upload"></i>
+                        </div>
+                  </div>
+                  
+                  
+                  <div class="col-xs-12" style="margin-bottom: 40px">
+                    
+                      <h3>Subida de Archivos</h3>
+                      <p>Cantidad de Archivos: {{ uploader?.queue?.length }}</p>
+          
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th width="50%">Nombre</th>
+                              <th>Size</th>
+                              <th>Progress</th>
+                              <th>Status</th>
+                              <th>Actions</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let item of uploader.queue">
+                              <td><strong>{{ item?.file?.name }}</strong></td>
+                              <td *ngIf="uploader.isHTML5" nowrap>{{ (item?.file?.size/1024/1024 | number:'.2')?(item?.file?.size/1024/1024 | number:'.2'):'holi' }} MB</td>
+                              <td *ngIf="uploader.isHTML5">
+                                  <div class="progress" style="margin-bottom: 0;">
+                                      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                  </div>
+                              </td>
+                              <td class="text-center">
+                                  <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                  <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                  <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                              </td>
+                              <td nowrap>
+                                  <button type="button" class="btn btn-success btn-xs"
+                                          (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                      <span class="glyphicon glyphicon-upload"></span> Upload
+                                  </button>
+                                  <button type="button" class="btn btn-warning btn-xs"
+                                          (click)="item.cancel()" [disabled]="!item.isUploading">
+                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                  </button>
+                                  <button type="button" class="btn btn-danger btn-xs"
+                                          (click)="item.remove()">
+                                      <span class="glyphicon glyphicon-trash"></span> Remove
+                                  </button>
+                              </td>
+                          </tr>
+                          </tbody>
+                      </table>
+          
+                      <div>
+                          <div>
+                              Queue progress:
+                              <div class="progress" style="">
+                                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                              </div>
+                          </div>
+                          <button type="button" class="btn btn-success btn-s"
+                                  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                              <span class="glyphicon glyphicon-upload"></span> Upload all
+                          </button>
+                          <button type="button" class="btn btn-warning btn-s"
+                                  (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                          </button>
+                          <button type="button" class="btn btn-danger btn-s"
+                                  (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                              <span class="glyphicon glyphicon-trash"></span> Remove all
+                          </button>
+                      </div>
+          
+                  </div>
+                    <input type="hidden" class="form-control" id="id" name="id" required
+                            ngModel #id="ngModel" >
+                    
+                  <div class="form-group col-xs-12 text-right m-b-15 hidden">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+                  </div>
+              </form>
+              
+          </div>
+          <div class="modal-footer" style="border:none;">
+             
+          </div>
+      </div>
+  </div>
+  
+  
+  
+</div>
+
+
+<div class="modal fade" id="Loading">
+    <div class="modal-dialog">
+      <div class="text-center" style="margin-top:50%;">
+  <app-loader></app-loader>
+      </div>
+    </div>
+  </div>

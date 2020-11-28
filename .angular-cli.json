@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "front-end"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "./assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/bower_components/metisMenu/dist/metisMenu.min.css",
+        "./../node_modules/ng2-drag-drop/style.css",
+        "./../node_modules/loaders.css/loaders.min.css",
+        "./assets/bower_components/chartist-js/dist/chartist.min.css",
+        "./assets/bower_components/chartist-js/dist/chartist-init.css",
+        "./assets/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css",
+        "./../node_modules/fullcalendar/dist/fullcalendar.min.css",
+        "./assets/css/style.css",
+        "styles.css"
+      ],
+      "scripts": [
+        "./assets/bower_components/jquery/dist/jquery.min.js",
+        "./assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "./assets/bower_components/metisMenu/dist/metisMenu.min.js",
+        "./assets/js/jquery.nicescroll.js",
+        "./assets/bower_components/jquery-sparkline/jquery.sparkline.min.js",
+        "./assets/bower_components/jquery-sparkline/jquery.charts-sparkline.js",
+        "./assets/bower_components/vectormap/jquery-jvectormap-2.0.2.min.js",
+        "./assets/bower_components/vectormap/jquery-jvectormap-world-mill-en.js",
+        "./assets/js/waves.js",
+        "./assets/js/upload.js",
+        "./assets/js/myadmin.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
