@@ -4,21 +4,21 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 @Injectable()
 export class HomeGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+  constructor(private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      if (localStorage.getItem('currentUser')) {
-        this.router.navigate(['colegio']);
-      }
-
-      if (!localStorage.getItem('currentUser')) {
-        return true;        
-      }
-        
-          // not logged in so redirect to login page with the return url
-          
-       
-
-        
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (localStorage.getItem('currentUser')) {
+      this.router.navigate(['colegio']);
     }
+
+    if (!localStorage.getItem('currentUser')) {
+      return true;
+    }
+
+    // not logged in so redirect to login page with the return url
+
+
+
+
+  }
 }
