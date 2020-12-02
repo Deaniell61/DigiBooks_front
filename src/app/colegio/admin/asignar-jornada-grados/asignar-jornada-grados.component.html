@@ -1,147 +1,160 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Data Tables</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data Table</li>
-      </ol>
+    <h4 class="page-title">Data Tables</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Table</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" (click)="limpiar()" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
-                      </div>
-                      
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>  
-                    </div> 
-                   <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                      <thead>
-                        <tr>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="cycles.description">Ciclo</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="studying_days.description">Jornada</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="begin">Inicio</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="end">Final</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="tuiton">Matricula</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="inscription">Inscripcion</mfDefaultSorter></th>
-                            <th style="width:15%;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let data of mf.data">
-                            <td>{{((data.cycles.description!=null)?data.cycles.description:'')}}</td>
-                            <td>{{((data.studying_days.description!=null)?data.studying_days.description:'')}}</td>
-                            <td>{{((data.begin!=null)?data.begin:'')}}</td>
-                            <td>{{((data.end!=null)?data.end:'')}}</td>
-                            <td>{{((data.tuiton!=null)?'Q. '+data.tuiton:'')}}</td>
-                            <td>{{((data.inscription!=null)?'Q. '+data.inscription:'')}}</td>
-                            <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#insertModal" (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
-                              
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                          <td colspan="5">
-                              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                          </td>
-                      </tr>
-                      </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" (click)="limpiar()"
+                  data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
+              </div>
+
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="cycles.description">Ciclo</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="studying_days.description">Jornada</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="begin">Inicio</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="end">Final</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="tuiton">Matricula</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="inscription">Inscripcion</mfDefaultSorter>
+                  </th>
+                  <th style="width:15%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mf.data">
+                  <td>{{((data.cycles.description!=null)?data.cycles.description:'')}}</td>
+                  <td>{{((data.studying_days.description!=null)?data.studying_days.description:'')}}</td>
+                  <td>{{((data.begin!=null)?data.begin:'')}}</td>
+                  <td>{{((data.end!=null)?data.end:'')}}</td>
+                  <td>{{((data.tuiton!=null)?'Q. '+data.tuiton:'')}}</td>
+                  <td>{{((data.inscription!=null)?'Q. '+data.inscription:'')}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#insertModal"
+                      (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Ingreso de datos</h4>
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
+      </div>
+      <div class="modal-body">
+
+        <form id="insert-form" #InsertForm="ngForm" (ngSubmit)="delete(InsertForm.value)">
+
+          <div class="form-group col-xs-6 m-b-15">
+            <label for="description">Grados</label>
+            <input type="text" class="form-control" placeholder="Busqueda de Grados" [(ngModel)]="search"
+              [ngModelOptions]="{standalone: true}">
+            <div droppable (onDrop)="onItemRemove($event)" class="listaDrag">
+
+              <li draggable [dragData]="Data" *ngFor="let Data of childs |filter:search" class="alert alert-success">
+                {{((Data.name!=null)?Data.name:'')}}
+
+              </li>
             </div>
-            <div class="modal-body">
-                
-                <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="delete(InsertForm.value)">
-                    
-                    <div class="form-group col-xs-6 m-b-15" >
-                        <label for="description">Grados</label>
-                        <input type="text" class="form-control" placeholder="Busqueda de Grados" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        <div droppable (onDrop)="onItemRemove($event)" class="listaDrag">
-                          
-                          <li draggable [dragData]="Data" *ngFor = "let Data of childs |filter:search" class="alert alert-success" >
-                            {{((Data.name!=null)?Data.name:'')}}
-                            
-                          </li> 
-                        </div>
-                        
-                    </div>
-                      <div  class="form-group col-xs-6 m-b-15" >
-                        <label for="cycle_study_day">Ciclo/Jornada</label>
-                        <select name="cycle_study_day" class="form-control" id="cycle_study_day" [(ngModel)]="selectedParent" required ngModel #cyclestudyday="ngModel" (change)="cargarSingle(cyclestudyday.value)">
-                          <option *ngFor="let Data of parentCombo" value="{{Data.id}}">{{((Data.cycles.description!=null)?Data.cycles.description+'-':'')+((Data.studying_days.description!=null)?Data.studying_days.description:'')}}</option>
-                        </select>
-                          <div droppable (onDrop)="onItemDrop($event)"  class="listaDrag " >
-                            <li draggable [dragData]="item" *ngFor="let item of selectedData" class="alert alert-info">
-                              {{((item.name!=null)?item.name:'')}}
-                            </li>
-                          </div>
-                        </div>  
-                    
-                    <div class="form-group col-xs-12 text-right m-b-15">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
-                </form>
-                
+
+          </div>
+          <div class="form-group col-xs-6 m-b-15">
+            <label for="cycle_study_day">Ciclo/Jornada</label>
+            <select name="cycle_study_day" class="form-control" id="cycle_study_day" [(ngModel)]="selectedParent"
+              required ngModel #cyclestudyday="ngModel" (change)="cargarSingle(cyclestudyday.value)">
+              <option *ngFor="let Data of parentCombo" value="{{Data.id}}">
+                {{((Data.cycles.description!=null)?Data.cycles.description+'-':'')+((Data.studying_days.description!=null)?Data.studying_days.description:'')}}
+              </option>
+            </select>
+            <div droppable (onDrop)="onItemDrop($event)" class="listaDrag ">
+              <li draggable [dragData]="item" *ngFor="let item of selectedData" class="alert alert-info">
+                {{((item.name!=null)?item.name:'')}}
+              </li>
             </div>
-            <div class="modal-footer" style="border:none;">
-               
-            </div>
-        </div>
+          </div>
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
     </div>
-    
-    
-    
   </div>
 
 
-  <div class="modal fade" id="Loading">
-      <div class="modal-dialog">
-        <div class="text-center" style="margin-top:50%;">
-    <app-loader></app-loader>
-        </div>
-      </div>
+
+</div>
+
+
+<div class="modal fade" id="Loading">
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
-    
-    
+  </div>
+</div>

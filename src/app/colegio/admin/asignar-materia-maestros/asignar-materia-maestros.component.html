@@ -1,165 +1,194 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Data Tables</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data Table</li>
-      </ol>
+    <h4 class="page-title">Data Tables</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Table</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal" (click)="limpiar()" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
-                      </div>
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>  
-                      
-                    </div> 
-                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                      <thead>
-                        <tr>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="subjects.name">Materia</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.grades.name">Grado</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.cycles">Ciclo</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.studying_days">Jornada</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.begin">Inicio</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.end">Final</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.tuiton">Matricula</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="grades.cycles_studying_days.inscription">Inscripcion</mfDefaultSorter></th>
-                            <th style="width:5%;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let data of mf.data">
-                            <td>{{((data.subjects.name!=null)?data.subjects.name:'')}}</td>
-                            <td>{{((data.grades.grades.name!=null)?data.grades.grades.name:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.cycles.description!=null)?data.grades.cycles_studying_days.cycles.description:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.studying_days.description!=null)?data.grades.cycles_studying_days.studying_days.description:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.begin!=null)?data.grades.cycles_studying_days.begin:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.end!=null)?data.grades.cycles_studying_days.end:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.tuiton!=null)?'Q. '+data.grades.cycles_studying_days.tuiton:'')}}</td>
-                            <td>{{((data.grades.cycles_studying_days.inscription!=null)?'Q. '+data.grades.cycles_studying_days.inscription:'')}}</td>
-                            <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#insertModal" (click)="cargarSingle(data.grades.grades.id,data.grades.cycles_studying_days.id,data.subjects.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
-                              
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                          <td colspan="5">
-                              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                          </td>
-                      </tr>
-                      </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal"
+                  (click)="limpiar()" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
+              </div>
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="subjects.name">Materia</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.grades.name">Grado</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.cycles">Ciclo</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.studying_days">Jornada</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.begin">Inicio</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.end">Final</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.tuiton">Matricula</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;">
+                    <mfDefaultSorter by="grades.cycles_studying_days.inscription">Inscripcion</mfDefaultSorter>
+                  </th>
+                  <th style="width:5%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mf.data">
+                  <td>{{((data.subjects.name!=null)?data.subjects.name:'')}}</td>
+                  <td>{{((data.grades.grades.name!=null)?data.grades.grades.name:'')}}</td>
+                  <td>
+                    {{((data.grades.cycles_studying_days.cycles.description!=null)?data.grades.cycles_studying_days.cycles.description:'')}}
+                  </td>
+                  <td>
+                    {{((data.grades.cycles_studying_days.studying_days.description!=null)?data.grades.cycles_studying_days.studying_days.description:'')}}
+                  </td>
+                  <td>{{((data.grades.cycles_studying_days.begin!=null)?data.grades.cycles_studying_days.begin:'')}}
+                  </td>
+                  <td>{{((data.grades.cycles_studying_days.end!=null)?data.grades.cycles_studying_days.end:'')}}</td>
+                  <td>
+                    {{((data.grades.cycles_studying_days.tuiton!=null)?'Q. '+data.grades.cycles_studying_days.tuiton:'')}}
+                  </td>
+                  <td>
+                    {{((data.grades.cycles_studying_days.inscription!=null)?'Q. '+data.grades.cycles_studying_days.inscription:'')}}
+                  </td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#insertModal"
+                      (click)="cargarSingle(data.grades.grades.id,data.grades.cycles_studying_days.id,data.subjects.id)"
+                      style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Ingreso de datos</h4>
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
+      </div>
+      <div class="modal-body">
+
+        <form id="insert-form" #InsertForm="ngForm" (ngSubmit)="delete(InsertForm.value)">
+
+          <div class="form-group col-xs-6 m-b-15">
+            <label for="description">Maestros</label>
+            <input type="text" class="form-control" placeholder="Busqueda de Maestros" [(ngModel)]="search"
+              [ngModelOptions]="{standalone: true}">
+            <div droppable (onDrop)="onItemRemove($event)" class="listaDrag">
+
+              <li draggable [dragData]="Data" *ngFor="let Data of childs |filter:search" class="alert alert-success">
+                {{((Data.firstname!=null)?Data.firstname+' ':'')+((Data.lastname!=null)?Data.lastname:'')}}
+
+              </li>
             </div>
-            <div class="modal-body">
-                
-                <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="delete(InsertForm.value)">
-                    
-                    <div class="form-group col-xs-6 m-b-15" >
-                        <label for="description">Maestros</label>
-                        <input type="text" class="form-control" placeholder="Busqueda de Maestros" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        <div droppable (onDrop)="onItemRemove($event)" class="listaDrag">
-                          
-                          <li draggable [dragData]="Data" *ngFor = "let Data of childs |filter:search" class="alert alert-success" >
-                            {{((Data.firstname!=null)?Data.firstname+' ':'')+((Data.lastname!=null)?Data.lastname:'')}}
-                            
-                          </li> 
-                        </div>
-                        
-                    </div>
-                      <div  class="form-group col-xs-6 m-b-15" >
-                        <label for="cyclestudyingdays">Ciclo/Jornada</label>
-                        <select name="cyclestudyingdays" class="form-control" id="cyclestudyingdays" [(ngModel)]="selectedGrandParent" required ngModel #cyclestudyingdays="ngModel" (change)="cargarChild(cyclestudyingdays.value)">
-                          <option *ngFor="let Data of grandParentCombo" value="{{Data.id}}">{{((Data.cycles.description!=null)?Data.cycles.description+'-':'')+((Data.studying_days.description!=null)?Data.studying_days.description:'')}}</option>
-                        </select>
-                        <label for="grades">Grados</label>
-                        <select name="grades" *ngIf="parentCombo" class="form-control" id="grades" [(ngModel)]="selectedParent" required ngModel #grades="ngModel" (change)="cargarGrandChilds(grades.value)">
-                          <option value=""></option>
-                          <option *ngFor="let Data of parentCombo" value="{{Data.id}}">{{((Data.name!=null)?Data.name:'')}}</option>
-                        </select>
-                        <label for="subjects">Materias</label>
-                        <select name="subjects" *ngIf="selectedData" class="form-control" id="subjects" [(ngModel)]="selectedChild" required ngModel #subjects="ngModel" (change)="cargarChilds(subjects.value)">
-                          <option value=""></option>
-                          <option *ngFor="let Data of selectedData" value="{{Data.id}}">{{((Data.name!=null)?Data.name:'')}}</option>
-                        </select>
-                           
-                              <div droppable (onDrop)="onItemDrop($event)" class="listaDrag ">
-                                <li draggable [dragData]="item" *ngFor="let item of selectedDataSigned" class="alert alert-danger">
-                                  {{((item.firstname!=null)?item.firstname+' ':'')+((item.lastname!=null)?item.lastname:'')}}
-                                  </li>
-                            
-                              </div>
-                        </div>  
-                    
-                    <div class="form-group col-xs-12 text-right m-b-15">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
-                </form>
-                
+
+          </div>
+          <div class="form-group col-xs-6 m-b-15">
+            <label for="cyclestudyingdays">Ciclo/Jornada</label>
+            <select name="cyclestudyingdays" class="form-control" id="cyclestudyingdays"
+              [(ngModel)]="selectedGrandParent" required ngModel #cyclestudyingdays="ngModel"
+              (change)="cargarChild(cyclestudyingdays.value)">
+              <option *ngFor="let Data of grandParentCombo" value="{{Data.id}}">
+                {{((Data.cycles.description!=null)?Data.cycles.description+'-':'')+((Data.studying_days.description!=null)?Data.studying_days.description:'')}}
+              </option>
+            </select>
+            <label for="grades">Grados</label>
+            <select name="grades" *ngIf="parentCombo" class="form-control" id="grades" [(ngModel)]="selectedParent"
+              required ngModel #grades="ngModel" (change)="cargarGrandChilds(grades.value)">
+              <option value=""></option>
+              <option *ngFor="let Data of parentCombo" value="{{Data.id}}">{{((Data.name!=null)?Data.name:'')}}</option>
+            </select>
+            <label for="subjects">Materias</label>
+            <select name="subjects" *ngIf="selectedData" class="form-control" id="subjects" [(ngModel)]="selectedChild"
+              required ngModel #subjects="ngModel" (change)="cargarChilds(subjects.value)">
+              <option value=""></option>
+              <option *ngFor="let Data of selectedData" value="{{Data.id}}">{{((Data.name!=null)?Data.name:'')}}
+              </option>
+            </select>
+
+            <div droppable (onDrop)="onItemDrop($event)" class="listaDrag ">
+              <li draggable [dragData]="item" *ngFor="let item of selectedDataSigned" class="alert alert-danger">
+                {{((item.firstname!=null)?item.firstname+' ':'')+((item.lastname!=null)?item.lastname:'')}}
+              </li>
+
             </div>
-            <div class="modal-footer" style="border:none;">
-               
-            </div>
-        </div>
+          </div>
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
     </div>
-    
-    
-    
   </div>
 
 
-  <div class="modal fade" id="Loading">
-      <div class="modal-dialog">
-        <div class="text-center" style="margin-top:50%;">
-    <app-loader></app-loader>
-        </div>
-      </div>
+
+</div>
+
+
+<div class="modal fade" id="Loading">
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
-    
-    
+  </div>
+</div>
