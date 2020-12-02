@@ -1,65 +1,65 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Materia</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Estudiante</a></li>
-          <li><a href="#">Cursos</a></li>
-      </ol>
+    <h4 class="page-title">Materia</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Estudiante</a></li>
+      <li><a href="#">Cursos</a></li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body" *ngIf="tipo == '1'">
-      <div class="table-responsive">
-          <div class="box-body">
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-3 "  *ngFor="let Data of Table">
-                            
-                       <div class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../curso-detalle' , Data.subjects.id , Data.subjects.subjects.name]">
-                            <div class="card-body">
-                              <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
-                                <h4 class="card-title"  style="margin-bottom:0px">
-                                  {{((Data.subjects!=null)?Data.subjects.subjects.name:'')}}
-                                </h4>
-                                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
-                                    {{((Data.subjects.grades.cycles_studying_days!=null)?Data.subjects.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
-                                    {{((Data.subjects.grades.cycles_studying_days!=null)?Data.subjects.grades.cycles_studying_days.studying_days.description:'')}}   
-                                </h6>
-                            </div>
-                              <p class="card-text">
-                                  {{((Data.subjects.grades!=null)?Data.subjects.grades.grades.name:'')}}
-                                </p>
-                                <p class="card-text">
-                                {{((Data.subjects.subjects!=null)?Data.subjects.subjects.comment:'')}}                                
-                                  </p>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{((Data.subjects!=null)?Data.subjects.subjects.description:'')}} 
-                              </div>
-                          </div>
-                      </div>
-                    </div> 
+    <div class="table-responsive">
+      <div class="box-body">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-3 " *ngFor="let Data of Table">
+
+                <div class="card text-center alert alert-success " style="cursor:pointer;"
+                  [routerLink]="[ '../../curso-detalle' , Data.subjects.id , Data.subjects.subjects.name]">
+                  <div class="card-body">
+                    <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                      <h4 class="card-title" style="margin-bottom:0px">
+                        {{((Data.subjects!=null)?Data.subjects.subjects.name:'')}}
+                      </h4>
+                      <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                        {{((Data.subjects.grades.cycles_studying_days!=null)?Data.subjects.grades.cycles_studying_days.cycles.description:'')+'-'}}
+                        {{((Data.subjects.grades.cycles_studying_days!=null)?Data.subjects.grades.cycles_studying_days.studying_days.description:'')}}
+                      </h6>
+                    </div>
+                    <p class="card-text">
+                      {{((Data.subjects.grades!=null)?Data.subjects.grades.grades.name:'')}}
+                    </p>
+                    <p class="card-text">
+                      {{((Data.subjects.subjects!=null)?Data.subjects.subjects.comment:'')}}
+                    </p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    {{((Data.subjects!=null)?Data.subjects.subjects.description:'')}}
+                  </div>
                 </div>
-            </div> 
+              </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
+</div>
