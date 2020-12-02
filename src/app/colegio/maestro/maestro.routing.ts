@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MaestroComponent } from "./maestro.component";
+import { MaestroComponent } from './maestro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { CursoAlumnosComponent } from './curso-alumnos/curso-alumnos.component';

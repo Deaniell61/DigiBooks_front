@@ -1,215 +1,240 @@
 <div class="row bg-title">
   <div class="col-lg-10">
-      <h4 class="page-title">Asistencias</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Maestro</a></li>
-          <li><a href="#" (click)="goBack()">Cursos</a></li>
-          <li class="active">{{title}}</li>
-      </ol>
-      
+    <h4 class="page-title">Asistencias</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Maestro</a></li>
+      <li><a href="#" (click)="goBack()">Cursos</a></li>
+      <li class="active">{{title}}</li>
+    </ol>
+
   </div>
   <div class="col-lg-2">
-    
-      <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
+
+    <a class="btn btn-info m-t-30" (click)="goBack()"><i class="fa fa-arrow-left fa-arrows"></i> Regresar</a>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Dia Estudiado</button>
-                      </div>
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>   
-                      
-                    </div> 
-                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                        <thead>
-                            <tr>
-                                <th style="width:80%;">
-                                    <mfDefaultSorter by="assistance_date">Fecha</mfDefaultSorter></th>
-                                <th style="width:20%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of mf.data">
-                                <td>{{((data.assistance_date!=null)?data.assistance_date:'')}}</td>
-                                <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                                  <button type="button" class="btn btn-warning circle" data-toggle="modal" data-target="#editModal" (click)="cargarSingle(data,idSubject)" style="cursor:pointer;"><i class="fa fa-table"></i> Detalle</button>
-                                  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                                </td>
-                            </tr>
-                            </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#insertModal"
+                  style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Dia Estudiado</button>
+              </div>
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:80%;">
+                    <mfDefaultSorter by="assistance_date">Fecha</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mf.data">
+                  <td>{{((data.assistance_date!=null)?data.assistance_date:'')}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning circle" data-toggle="modal" data-target="#editModal"
+                      (click)="cargarSingle(data,idSubject)" style="cursor:pointer;"><i class="fa fa-table"></i>
+                      Detalle</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Ingreso de datos</h4>
-          </div>
-          <div class="modal-body">
-              <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="childsInsert(InsertForm.value)">
-                 <div class="form-group col-xs-12 m-b-12">
-                        <label for="assistance_date">Fecha</label>
-                        <input type="date" class="form-control" id="assistance_date" name="assistance_date" required
-                                ngModel #assistance_date="ngModel" [(ngModel)]="date">
-                          <div *ngIf="assistance_date.invalid && (assistance_date.dirty || assistance_date.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="assistance_date.errors.required">
-                                  La Fecha es invalida
-                              </small>
-                          </div>
-                  </div>
-                  <input type="hidden" class="form-control" id="subject_student" name="subject_student" required
-                  ngModel #id="ngModel" [(ngModel)]="idSubject">
-                  <div class="form-group col-xs-12 text-right m-b-15">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                  </div>
-              </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-             
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
       </div>
+      <div class="modal-body">
+        <form id="insert-form" #InsertForm="ngForm" (ngSubmit)="childsInsert(InsertForm.value)">
+          <div class="form-group col-xs-12 m-b-12">
+            <label for="assistance_date">Fecha</label>
+            <input type="date" class="form-control" id="assistance_date" name="assistance_date" required ngModel
+              #assistance_date="ngModel" [(ngModel)]="date">
+            <div *ngIf="assistance_date.invalid && (assistance_date.dirty || assistance_date.touched)"
+              class="alert alert-danger" role="alert">
+              <small *ngIf="assistance_date.errors.required">
+                La Fecha es invalida
+              </small>
+            </div>
+          </div>
+          <input type="hidden" class="form-control" id="subject_student" name="subject_student" required ngModel
+            #id="ngModel" [(ngModel)]="idSubject">
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
   </div>
-  
-  
-  
+
+
+
 </div>
 
-<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Edicion de datos</h4>
-          </div>
-          <div class="modal-body" *ngIf="selectedData">
-              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
-                  <div class="form-group col-xs-12 m-b-12">
-                        <label for="assistance_date">Fecha</label>
-                        <input type="date" class="form-control" id="assistance_date" name="assistance_date" 
-                                ngModel #assistance_date="ngModel" [(ngModel)]="selectedData.homework.assistance_date" disabled>
-                          <div *ngIf="assistance_date.invalid && (assistance_date.dirty || assistance_date.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="assistance_date.errors.required">
-                                  La Fecha es invalida
-                              </small>
-                          </div>
-                  </div>
-                  <div class="form-group col-xs-3 m-b-3">
-                        <label for="studied">Dia Estudiado</label>
-                        <input type="checkbox" class="form-control" id="studied" name="studied" required 
-                                ngModel #studied="ngModel" [(ngModel)]="selectedData.homework.studied">
-                          
-                  </div>
-                  
-                  <input type="hidden" class="form-control" id="subject_student" name="subject_student" required
-                  ngModel #id="ngModel" [(ngModel)]="idSubject">
-          
-       
-                  <div class="form-group col-xs-12 text-right m-b-15">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                  </div>
-
-                 
-                  <table *ngIf="selectedData.students && view==1" class="table table-hover table-responsive" [mfData]="selectedData.students | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                    <thead>
-                        <tr>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="students.firstname">Nombre</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="students.address">Direccion</mfDefaultSorter></th>
-                            <th style="width:20%;">
-                                <mfDefaultSorter by="students.phone">Telefono</mfDefaultSorter></th>
-                            <th style="width:10%;">
-                                <mfDefaultSorter by="students.phone">Asistio</mfDefaultSorter></th>
-                            <th style="width:20%;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr  *ngFor="let data of mf.data">
-                          <td>{{((data.students.firstname!=null)?data.students.firstname+' ':'')+((data.students.lastname!=null)?data.students.lastname:'')}}</td>
-                          <td>{{((data.students.address!=null)?data.students.address:'')}}</td>
-                          <td>{{((data.students.phone!=null)?data.students.phone:'')}}</td>
-                          <td>
-                            <span *ngFor="let home of data.assistance">
-                              <button *ngIf="home.assistance_date==selectedData.homework.assistance_date && home.assistance==1 && home.assistance!=null" type="button" class="btn btn-success btn-circle btn-lg"  style="cursor:pointer;"><i class="fa fa-check"></i> </button>
-                              <button *ngIf="home.assistance_date==selectedData.homework.assistance_date && home.assistance!=1 && home.assistance!=null" type="button" class="btn btn-danger btn-circle btn-lg" style="cursor:pointer;"><i class="fa fa-times"></i> </button>
-                            </span>
-                          </td>
-                          <td>
-                              <button  type="button" class="btn btn-success btn-circle btn-lg" (click)='secondChildUpdate(selectedData.homework.assistance_date,data,1)' style="cursor:pointer;"><i class="fa fa-check"></i> </button>
-                              <button  type="button" class="btn btn-danger btn-circle btn-lg" (click)='secondChildUpdate(selectedData.homework.assistance_date,data,0)' style="cursor:pointer;"><i class="fa fa-times"></i> </button>
-                          </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                          <td colspan="5">
-                              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                          </td>
-                      </tr>
-                      </tfoot>
-                </table>
-                
-                 
-                  
-                    
-              </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-             
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Edicion de datos</h4>
       </div>
+      <div class="modal-body" *ngIf="selectedData">
+        <form id="edit-form" #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+          <div class="form-group col-xs-12 m-b-12">
+            <label for="assistance_date">Fecha</label>
+            <input type="date" class="form-control" id="assistance_date" name="assistance_date" ngModel
+              #assistance_date="ngModel" [(ngModel)]="selectedData.homework.assistance_date" disabled>
+            <div *ngIf="assistance_date.invalid && (assistance_date.dirty || assistance_date.touched)"
+              class="alert alert-danger" role="alert">
+              <small *ngIf="assistance_date.errors.required">
+                La Fecha es invalida
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-3 m-b-3">
+            <label for="studied">Dia Estudiado</label>
+            <input type="checkbox" class="form-control" id="studied" name="studied" required ngModel #studied="ngModel"
+              [(ngModel)]="selectedData.homework.studied">
+
+          </div>
+
+          <input type="hidden" class="form-control" id="subject_student" name="subject_student" required ngModel
+            #id="ngModel" [(ngModel)]="idSubject">
+
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+
+
+          <table *ngIf="selectedData.students && view==1" class="table table-hover table-responsive"
+            [mfData]="selectedData.students | filter : search" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+            <thead>
+              <tr>
+                <th style="width:20%;">
+                  <mfDefaultSorter by="students.firstname">Nombre</mfDefaultSorter>
+                </th>
+                <th style="width:20%;">
+                  <mfDefaultSorter by="students.address">Direccion</mfDefaultSorter>
+                </th>
+                <th style="width:20%;">
+                  <mfDefaultSorter by="students.phone">Telefono</mfDefaultSorter>
+                </th>
+                <th style="width:10%;">
+                  <mfDefaultSorter by="students.phone">Asistio</mfDefaultSorter>
+                </th>
+                <th style="width:20%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of mf.data">
+                <td>
+                  {{((data.students.firstname!=null)?data.students.firstname+' ':'')+((data.students.lastname!=null)?data.students.lastname:'')}}
+                </td>
+                <td>{{((data.students.address!=null)?data.students.address:'')}}</td>
+                <td>{{((data.students.phone!=null)?data.students.phone:'')}}</td>
+                <td>
+                  <span *ngFor="let home of data.assistance">
+                    <button
+                      *ngIf="home.assistance_date==selectedData.homework.assistance_date && home.assistance==1 && home.assistance!=null"
+                      type="button" class="btn btn-success btn-circle btn-lg" style="cursor:pointer;"><i
+                        class="fa fa-check"></i> </button>
+                    <button
+                      *ngIf="home.assistance_date==selectedData.homework.assistance_date && home.assistance!=1 && home.assistance!=null"
+                      type="button" class="btn btn-danger btn-circle btn-lg" style="cursor:pointer;"><i
+                        class="fa fa-times"></i> </button>
+                  </span>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-circle btn-lg"
+                    (click)='secondChildUpdate(selectedData.homework.assistance_date,data,1)' style="cursor:pointer;"><i
+                      class="fa fa-check"></i> </button>
+                  <button type="button" class="btn btn-danger btn-circle btn-lg"
+                    (click)='secondChildUpdate(selectedData.homework.assistance_date,data,0)' style="cursor:pointer;"><i
+                      class="fa fa-times"></i> </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+
+
+
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
   </div>
-  
-  
-  
+
+
+
 </div>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
+</div>

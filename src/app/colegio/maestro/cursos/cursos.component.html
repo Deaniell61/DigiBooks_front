@@ -1,182 +1,185 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Materia</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Maestro</a></li>
-          <li><a href="#">Cursos</a></li>
-      </ol>
+    <h4 class="page-title">Materia</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Maestro</a></li>
+      <li><a href="#">Cursos</a></li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body" *ngIf="tipo == '4'">
-      <div class="table-responsive">
-          <div class="box-body">
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-3 "  *ngFor="let Data of Table">
-                            
-                       <div class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../detalle-alumno' , Data.id , Data.subjects.name ]">
-                            <div class="card-body">
-                              <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
-                                <h4 class="card-title"  style="margin-bottom:0px">
-                                  {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
-                                </h4>
-                                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}   
-                                </h6>
-                            </div>
-                              <p class="card-text">
-                                  {{((Data.grades!=null)?Data.grades.grades.name:'')}}
-                                </p>
-                                <p class="card-text">
-                                {{((Data.subjects.comment!=null)?Data.subjects.comment:'')}}                                
-                                  </p>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{((Data.subjects.description!=null)?Data.subjects.description:'')}} 
-                              </div>
-                          </div>
-                      </div>
-                    </div> 
+    <div class="table-responsive">
+      <div class="box-body">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-3 " *ngFor="let Data of Table">
+
+                <div class="card text-center alert alert-success " style="cursor:pointer;"
+                  [routerLink]="[ '../../detalle-alumno' , Data.id , Data.subjects.name ]">
+                  <div class="card-body">
+                    <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                      <h4 class="card-title" style="margin-bottom:0px">
+                        {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
+                      </h4>
+                      <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}
+                      </h6>
+                    </div>
+                    <p class="card-text">
+                      {{((Data.grades!=null)?Data.grades.grades.name:'')}}
+                    </p>
+                    <p class="card-text">
+                      {{((Data.subjects.comment!=null)?Data.subjects.comment:'')}}
+                    </p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    {{((Data.subjects.description!=null)?Data.subjects.description:'')}}
+                  </div>
                 </div>
-            </div> 
+              </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="card-body" *ngIf="tipo == '3'">
-      <div class="table-responsive">
-          <div class="box-body">
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-3 "  *ngFor="let Data of Table">
-                            
-                       <div class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../asistencia' , Data.id , Data.subjects.name ]">
-                            <div class="card-body">
-                              <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
-                                <h4 class="card-title"  style="margin-bottom:0px">
-                                  {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
-                                </h4>
-                                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}   
-                                </h6>
-                            </div>
-                              <p class="card-text">
-                                  {{((Data.grades!=null)?Data.grades.grades.name:'')}}
-                                </p>
-                                <p class="card-text">
-                                {{((Data.subjects!=null)?Data.subjects.comment:'')}}                                
-                                  </p>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{((Data.subjects!=null)?Data.subjects.description:'')}} 
-                              </div>
-                          </div>
-                      </div>
-                    </div> 
+    <div class="table-responsive">
+      <div class="box-body">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-3 " *ngFor="let Data of Table">
+
+                <div class="card text-center alert alert-success " style="cursor:pointer;"
+                  [routerLink]="[ '../../asistencia' , Data.id , Data.subjects.name ]">
+                  <div class="card-body">
+                    <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                      <h4 class="card-title" style="margin-bottom:0px">
+                        {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
+                      </h4>
+                      <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}
+                      </h6>
+                    </div>
+                    <p class="card-text">
+                      {{((Data.grades!=null)?Data.grades.grades.name:'')}}
+                    </p>
+                    <p class="card-text">
+                      {{((Data.subjects!=null)?Data.subjects.comment:'')}}
+                    </p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    {{((Data.subjects!=null)?Data.subjects.description:'')}}
+                  </div>
                 </div>
-            </div> 
+              </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="card-body" *ngIf="tipo == '2'">
-      <div class="table-responsive">
-          <div class="box-body">
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-3 "  *ngFor="let Data of Table">
-                            
-                       <div class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../tareas' , Data.id , Data.subjects.name ]">
-                            <div class="card-body">
-                              <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
-                                <h4 class="card-title"  style="margin-bottom:0px">
-                                  {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
-                                </h4>
-                                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
-                                    {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}   
-                                </h6>
-                            </div>
-                              <p class="card-text">
-                                  {{((Data.grades!=null)?Data.grades.grades.name:'')}}
-                                </p>
-                                <p class="card-text">
-                                {{((Data.subjects!=null)?Data.subjects.comment:'')}}                                
-                                  </p>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{((Data.subjects!=null)?Data.subjects.description:'')}} 
-                              </div>
-                          </div>
-                      </div>
-                    </div> 
+    <div class="table-responsive">
+      <div class="box-body">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-3 " *ngFor="let Data of Table">
+
+                <div class="card text-center alert alert-success " style="cursor:pointer;"
+                  [routerLink]="[ '../../tareas' , Data.id , Data.subjects.name ]">
+                  <div class="card-body">
+                    <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                      <h4 class="card-title" style="margin-bottom:0px">
+                        {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
+                      </h4>
+                      <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}
+                      </h6>
+                    </div>
+                    <p class="card-text">
+                      {{((Data.grades!=null)?Data.grades.grades.name:'')}}
+                    </p>
+                    <p class="card-text">
+                      {{((Data.subjects!=null)?Data.subjects.comment:'')}}
+                    </p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    {{((Data.subjects!=null)?Data.subjects.description:'')}}
+                  </div>
                 </div>
-            </div> 
+              </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="card-body" *ngIf="tipo == '1'">
-        <div class="table-responsive">
-            <div class="box-body">
-                <div class="col-sm-12">
-                  <div class="white-box">
-                      <h3>Data Table</h3>
-                      <div class="row">
-                        <div class="col-md-3 "  *ngFor="let Data of Table">
-                              
-                         <div  class="card text-center alert alert-success " style="cursor:pointer;"  [routerLink]="[ '../../curso-alumnos' , Data.id , Data.subjects.name ]">
-                              <div class="card-body">
-                                <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
-                                  <h4 class="card-title"  style="margin-bottom:0px">
-                                    {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
-                                  </h4>
-                                  <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
-                                      {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}                                
-                                      {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}   
-                                  </h6>
-                              </div>
-                                <p class="card-text">
-                                    {{((Data.grades!=null)?Data.grades.grades.name:'')}}
-                                  </p>
-                                  <p class="card-text">
-                                  {{((Data.subjects.comment!=null)?Data.subjects.comment:'')}}                                
-                                    </p>
-                              </div>
-                              <div class="card-footer text-muted">
-                                  {{((Data.subjects.description!=null)?Data.subjects.description:'')}} 
-                                </div>
-                            </div>
-                        </div>
-                      </div> 
+    <div class="table-responsive">
+      <div class="box-body">
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-3 " *ngFor="let Data of Table">
+
+                <div class="card text-center alert alert-success " style="cursor:pointer;"
+                  [routerLink]="[ '../../curso-alumnos' , Data.id , Data.subjects.name ]">
+                  <div class="card-body">
+                    <div class=" alert alert-info" style="padding-bottom:0px;margin-bottom:0px;">
+                      <h4 class="card-title" style="margin-bottom:0px">
+                        {{((Data.subjects.name!=null)?Data.subjects.name:'')}}
+                      </h4>
+                      <h6 class="card-subtitle mb-2 text-muted" style="margin-top:0px">
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.cycles.description:'')+'-'}}
+                        {{((Data.grades!=null)?Data.grades.cycles_studying_days.studying_days.description:'')}}
+                      </h6>
+                    </div>
+                    <p class="card-text">
+                      {{((Data.grades!=null)?Data.grades.grades.name:'')}}
+                    </p>
+                    <p class="card-text">
+                      {{((Data.subjects.comment!=null)?Data.subjects.comment:'')}}
+                    </p>
                   </div>
-              </div> 
+                  <div class="card-footer text-muted">
+                    {{((Data.subjects.description!=null)?Data.subjects.description:'')}}
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
- 
+  </div>
+
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
+</div>

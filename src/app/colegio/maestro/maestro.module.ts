@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { DataTableModule } from "angular2-datatable";
+import { FormsModule } from '@angular/forms';
+import { DataTableModule } from 'angular2-datatable';
 
 import { MaestroRoutingModule } from './maestro.routing';
 import { MaestroComponent } from './maestro.component';
@@ -11,18 +11,18 @@ import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.componen
 import { TareasComponent } from './tareas/tareas.component';
 import { CursoAlumnosComponent } from './curso-alumnos/curso-alumnos.component';
 import { AsistenciaComponent } from './asistencia/asistencia.component';
-import { LoaderComponent } from "./loader/loader.component";
+import { LoaderComponent } from './loader/loader.component';
 
-import { CalendarModule } from "ap-angular2-fullcalendar";
+import { CalendarModule } from 'ap-angular2-fullcalendar';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { LoadersCssModule } from 'angular2-loaders-css';
 
-import { EventsService } from "./../admin/_services/events.service";
-import { CursosService } from "./_services/cursos.service";
-import { CursoAlumnosService } from "./_services/curso-alumnos.service";
+import { EventsService } from './../admin/_services/events.service';
+import { CursosService } from './_services/cursos.service';
+import { CursoAlumnosService } from './_services/curso-alumnos.service';
 import { AsistenciasService } from './_services/asistencias.service';
 import { TareasService } from './_services/tareas.service';
 import { RecomendacionesService } from './_services/recomendaciones.service';
