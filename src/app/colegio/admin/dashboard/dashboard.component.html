@@ -1,103 +1,77 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Chart Js</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Charts</a></li>
-          <li class="active">Chart Js</li>
-      </ol>
+    <h4 class="page-title">Chart Js</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Charts</a></li>
+      <li class="active">Chart Js</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <!-- row -->
 <div class="row">
   <div class="col-sm-6">
-      <div class="white-box">
-          <h3>Line Chart</h3>
-          <div style="display: block;">
-            <canvas baseChart width="400" height="200"
-                        [datasets]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColors"
-                        [legend]="lineChartLegend"
-                        [chartType]="lineChartType"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas>
-            </div>
+    <div class="white-box">
+      <h3>Line Chart</h3>
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="lineChartLabels"
+          [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
+    </div>
   </div>
   <div class="col-sm-6">
-      <div class="white-box">
-          <h3>Bar Chart</h3>
-          <div style="display: block">
-            <canvas baseChart width="400" height="200"
-                    [datasets]="barChartData"
-                    [labels]="barChartLabels"
-                    [options]="barChartOptions"
-                    [legend]="barChartLegend"
-                    [chartType]="barChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-          </div>
-        
+    <div class="white-box">
+      <h3>Bar Chart</h3>
+      <div style="display: block">
+        <canvas baseChart width="400" height="200" [datasets]="barChartData" [labels]="barChartLabels"
+          [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
+
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-6">
-      <div class="white-box">
-          <h3>Pie Chart</h3>
-          <div style="display: block">
-            <canvas baseChart width="400" height="200"
-                    [data]="pieChartData"
-                    [labels]="pieChartLabels"
-                    [chartType]="pieChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-          </div>
+    <div class="white-box">
+      <h3>Pie Chart</h3>
+      <div style="display: block">
+        <canvas baseChart width="400" height="200" [data]="pieChartData" [labels]="pieChartLabels"
+          [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
+    </div>
   </div>
   <div class="col-lg-6">
-      <div class="white-box">
-          <h3>Doughnut Chart</h3>
-          <div style="display: block">
-            <canvas baseChart width="400" height="200"
-                        [data]="doughnutChartData"
-                        [labels]="doughnutChartLabels"
-                        [chartType]="doughnutChartType"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas>
-          </div>
+    <div class="white-box">
+      <h3>Doughnut Chart</h3>
+      <div style="display: block">
+        <canvas baseChart width="400" height="200" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-6">
-      <div class="white-box">
-          <h3>Polar Area Chart</h3>
-          <div style="display: block">
-            <canvas baseChart width="400" height="200"
-                    [data]="polarAreaChartData"
-                    [labels]="polarAreaChartLabels"
-                    [legend]="polarAreaLegend"
-                    [chartType]="polarAreaChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-          </div>
+    <div class="white-box">
+      <h3>Polar Area Chart</h3>
+      <div style="display: block">
+        <canvas baseChart width="400" height="200" [data]="polarAreaChartData" [labels]="polarAreaChartLabels"
+          [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
       </div>
+    </div>
   </div>
   <div class="col-lg-6">
-      <div class="white-box">
-          <h3>Radar Chart</h3>
-          <div style="display: block">
-            <canvas baseChart width="400" height="200"
-                    [datasets]="radarChartData"
-                    [labels]="radarChartLabels"
-                    [chartType]="radarChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-          </div>
+    <div class="white-box">
+      <h3>Radar Chart</h3>
+      <div style="display: block">
+        <canvas baseChart width="400" height="200" [datasets]="radarChartData" [labels]="radarChartLabels"
+          [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { DataTableModule } from "angular2-datatable";
+import { FormsModule } from '@angular/forms';
+import { DataTableModule } from 'angular2-datatable';
 
 import { AdminRoutingModule } from './admin.routing';
 import { AdminComponent } from './admin.component';
@@ -31,25 +31,25 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { LoadersCssModule } from 'angular2-loaders-css';
 
-import { UsuariosService } from "./_services/usuarios.service";
-import { CyclesService } from "./_services/cycles.service";
-import { StudyingDaysService } from "./_services/studying-days.service";
-import { GradesService } from "./_services/grades.service";
-import { StudentsService } from "./_services/students.service";
-import { SubjectsService } from "./_services/subjects.service";
-import { TeachersService } from "./_services/teachers.service";
-import { TutorsService } from "./_services/tutors.service";
-import { EstudiantesTutoresService } from "./_services/_asignaciones/estudiantes-tutores.service";
-import { CiclosJornadaService } from "./_services/_asignaciones/ciclos-jornada.service";
-import { JornadaGradoService } from "./_services/_asignaciones/jornada-grado.service";
-import { GradoMateriaService } from "./_services/_asignaciones/grado-materia.service";
-import { MateriaMaestroService } from "./_services/_asignaciones/materia-maestro.service";
-import { UsersTypesService } from "./_services/users-types.service";
-import { EventsTypeService } from "./_services/events-type.service";
-import { EventsService } from "./_services/events.service";
-import { InscriptionsService } from "./_services/_asignaciones/inscriptions.service";
-import { InscriptionsStudyingDayService } from "./_services/_asignaciones/inscriptions-studying-day.service";
-import { ChargesService } from "./_services/charges.service";
+import { UsuariosService } from './_services/usuarios.service';
+import { CyclesService } from './_services/cycles.service';
+import { StudyingDaysService } from './_services/studying-days.service';
+import { GradesService } from './_services/grades.service';
+import { StudentsService } from './_services/students.service';
+import { SubjectsService } from './_services/subjects.service';
+import { TeachersService } from './_services/teachers.service';
+import { TutorsService } from './_services/tutors.service';
+import { EstudiantesTutoresService } from './_services/_asignaciones/estudiantes-tutores.service';
+import { CiclosJornadaService } from './_services/_asignaciones/ciclos-jornada.service';
+import { JornadaGradoService } from './_services/_asignaciones/jornada-grado.service';
+import { GradoMateriaService } from './_services/_asignaciones/grado-materia.service';
+import { MateriaMaestroService } from './_services/_asignaciones/materia-maestro.service';
+import { UsersTypesService } from './_services/users-types.service';
+import { EventsTypeService } from './_services/events-type.service';
+import { EventsService } from './_services/events.service';
+import { InscriptionsService } from './_services/_asignaciones/inscriptions.service';
+import { InscriptionsStudyingDayService } from './_services/_asignaciones/inscriptions-studying-day.service';
+import { ChargesService } from './_services/charges.service';
 
 import { LoaderComponent } from './loader/loader.component';
 import { CargosComponent } from './cargos/cargos.component';
@@ -60,36 +60,36 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     FormsModule,
-    DataTableModule, 
+    DataTableModule,
     ChartsModule,
-    SimpleNotificationsModule.forRoot(),  
-    Ng2SearchPipeModule, 
+    SimpleNotificationsModule.forRoot(),
+    Ng2SearchPipeModule,
     Ng2DragDropModule.forRoot(),
-    LoadersCssModule,  
+    LoadersCssModule,
     AdminRoutingModule
   ],
   declarations: [
-    AdminComponent, 
-    DashboardComponent, 
-    UsuariosComponent, 
-    CiclosComponent, 
-    JornadasComponent, 
-    MaestrosComponent, 
-    GradosComponent, 
-    CursosComponent, 
-    EstudiantesComponent, 
-    TutoresComponent, 
-    AsignarEstudiantesTutoresComponent, 
-    AsignarCicloJornadaComponent, 
-    AsignarJornadaGradosComponent, 
-    AsignarGradoMateriasComponent, 
-    AsignarMateriaMaestrosComponent, 
-    LoaderComponent, 
-    UsuariosTipoComponent, 
-    EventosComponent, 
-    EventosTipoComponent, 
-    InscribirAlumnoComponent, 
-    InscripcionJornadaComponent, 
+    AdminComponent,
+    DashboardComponent,
+    UsuariosComponent,
+    CiclosComponent,
+    JornadasComponent,
+    MaestrosComponent,
+    GradosComponent,
+    CursosComponent,
+    EstudiantesComponent,
+    TutoresComponent,
+    AsignarEstudiantesTutoresComponent,
+    AsignarCicloJornadaComponent,
+    AsignarJornadaGradosComponent,
+    AsignarGradoMateriasComponent,
+    AsignarMateriaMaestrosComponent,
+    LoaderComponent,
+    UsuariosTipoComponent,
+    EventosComponent,
+    EventosTipoComponent,
+    InscribirAlumnoComponent,
+    InscripcionJornadaComponent,
     CargosComponent, ProfileComponent
   ],
   providers: [

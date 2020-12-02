@@ -1,126 +1,121 @@
 <div class="row bg-title">
-    <div class="col-lg-12">
-        <h4 class="page-title">Edicion de Perfil</h4>
-        <ol class="breadcrumb">
-            <li><a href="#">Administrador</a></li>
-            <li><a href="#">Edicion de Perfil</a></li>
-            <li class="active">Editar</li>
-        </ol>
-    </div>
-    <!-- /.col-lg-12 -->
+  <div class="col-lg-12">
+    <h4 class="page-title">Edicion de Perfil</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Administrador</a></li>
+      <li><a href="#">Edicion de Perfil</a></li>
+      <li class="active">Editar</li>
+    </ol>
   </div>
+  <!-- /.col-lg-12 -->
+</div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 m-t-30 card" *ngIf="selectedUser">
-    <form id="edit-form"  #EditUserForm="ngForm" (ngSubmit)="updateUser(EditUserForm.value)">
-        <div *ngIf="selectedUser.picture!=null" class="form-group col-xs-6 col-xs-offset-3">
-            <img src="{{selectedUser.picture}}" id="imgAvatar" alt="Avatar" style="width:100%;">
-      </div>
-      
-      <div class="form-group col-xs-6 col-xs-offset-3">
-        <input type="file" id="avatar" (change)="subirImagenes($event,EditUserForm.value,'avatar')"/>
-        <progress value="0" max="100" id="barra_de_progreso"></progress>
+  <form id="edit-form" #EditUserForm="ngForm" (ngSubmit)="updateUser(EditUserForm.value)">
+    <div *ngIf="selectedUser.picture!=null" class="form-group col-xs-6 col-xs-offset-3">
+      <img src="{{selectedUser.picture}}" id="imgAvatar" alt="Avatar" style="width:100%;">
     </div>
-      
-      <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required
-                    ngModel #username="ngModel" [(ngModel)]="selectedUser.username">
-              <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                    class="alert alert-danger" role="alert">
-                  <small *ngIf="username.errors.required">
-                      El Usuario es invalido
-                  </small>
-              </div>
-        </div> 
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required
-                      ngModel #email="ngModel" [(ngModel)]="selectedUser.email">
-                <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                      class="alert alert-danger" role="alert">
-                    <small *ngIf="email.errors.required">
-                        El Email es invalido
-                    </small>
-                </div>
-        </div>
-        
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-            <label for="type">Tipo</label>
-            <select name="type" class="form-control" id="type" [(ngModel)]="selectedUser.type" required ngModel #type="ngModel" (change)="cargarForanea(type.value)">
-              <option value="4"></option>
-              <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
-            </select>
-        </div>
 
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15" >
-            <label for="type">{{foreignData.title}}</label>
-            <select name="foreign" class="form-control" id="foreign" [(ngModel)]="selectedUser.foreign" ngModel #foreign="ngModel" (change)="getForeign(selectedUser.foreign+'',type.value+'')">
-              <option value="null"></option>
-              <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">{{foreign1.firstname+' '+foreign1.lastname}}</option>
-            </select>
+    <div class="form-group col-xs-6 col-xs-offset-3">
+      <input type="file" id="avatar" (change)="subirImagenes($event,EditUserForm.value,'avatar')" />
+      <progress value="0" max="100" id="barra_de_progreso"></progress>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required ngModel #username="ngModel"
+        [(ngModel)]="selectedUser.username">
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger" role="alert">
+        <small *ngIf="username.errors.required">
+          El Usuario es invalido
+        </small>
       </div>
-        
-        
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required ngModel #email="ngModel"
+        [(ngModel)]="selectedUser.email">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" role="alert">
+        <small *ngIf="email.errors.required">
+          El Email es invalido
+        </small>
+      </div>
+    </div>
 
-          <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required
-                  ngModel #firstname="ngModel" [(ngModel)]="Data.firstnameData">
-          <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required
-                  ngModel #lastname="ngModel" [(ngModel)]="Data.lastnameData">
-          <input type="hidden" class="form-control" id="id" name="id" required
-                  ngModel #id="ngModel" [(ngModel)]="selectedUser.id">
-          
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right m-b-15">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-        </div>
-      </form>
-      <form id="passChange-form"  #passChange="ngForm" (ngSubmit)="updatePass(passChange.value)">
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-              <label for="old_pass">Contraseña Anterior</label>
-              <input type="password" class="form-control" id="old_pass" name="old_pass" required
-                      ngModel #old_pass="ngModel" [(ngModel)]="selectedUser.old_pass">
-                <div *ngIf="old_pass.invalid && (old_pass.dirty || old_pass.touched)"
-                      class="alert alert-danger" role="alert">
-                    <small *ngIf="old_pass.errors.required">
-                        La Contraseña Anterior es invalida
-                    </small>
-                </div>
-        </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="type">Tipo</label>
+      <select name="type" class="form-control" id="type" [(ngModel)]="selectedUser.type" required ngModel
+        #type="ngModel" (change)="cargarForanea(type.value)">
+        <option value="4"></option>
+        <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
+      </select>
+    </div>
 
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-              <label for="new_pass">Contraseña Nueva</label>
-              <input type="password" class="form-control" id="new_pass" name="new_pass" required
-                      ngModel #new_pass="ngModel">
-                <div *ngIf="new_pass.invalid && (new_pass.dirty || new_pass.touched)"
-                      class="alert alert-danger" role="alert">
-                    <small *ngIf="new_pass.errors.required">
-                        La Contraseña Nueva es invalida
-                    </small>
-                </div>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
-              <label for="new_pass2">Repita la Contraseña Nueva</label>
-              <input type="password" class="form-control" id="new_pass2" name="new_pass2" required
-                      ngModel #new_pass2="ngModel">
-                <div *ngIf="new_pass2.value != new_pass.value"
-                      class="alert alert-danger" role="alert">
-                    <small>
-                        Las contraseñas deben ser Iguales
-                    </small>
-                </div>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right m-b-15">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Cambiar Contraseña</button>
-        </div>
-    </form>
-  </div>
-  <simple-notifications [options]="options"></simple-notifications>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="type">{{foreignData.title}}</label>
+      <select name="foreign" class="form-control" id="foreign" [(ngModel)]="selectedUser.foreign" ngModel
+        #foreign="ngModel" (change)="getForeign(selectedUser.foreign+'',type.value+'')">
+        <option value="null"></option>
+        <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">
+          {{foreign1.firstname+' '+foreign1.lastname}}</option>
+      </select>
+    </div>
+
+
+
+    <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required ngModel
+      #firstname="ngModel" [(ngModel)]="Data.firstnameData">
+    <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required ngModel
+      #lastname="ngModel" [(ngModel)]="Data.lastnameData">
+    <input type="hidden" class="form-control" id="id" name="id" required ngModel #id="ngModel"
+      [(ngModel)]="selectedUser.id">
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right m-b-15">
+      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+    </div>
+  </form>
+  <form id="passChange-form" #passChange="ngForm" (ngSubmit)="updatePass(passChange.value)">
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="old_pass">Contraseña Anterior</label>
+      <input type="password" class="form-control" id="old_pass" name="old_pass" required ngModel #old_pass="ngModel"
+        [(ngModel)]="selectedUser.old_pass">
+      <div *ngIf="old_pass.invalid && (old_pass.dirty || old_pass.touched)" class="alert alert-danger" role="alert">
+        <small *ngIf="old_pass.errors.required">
+          La Contraseña Anterior es invalida
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="new_pass">Contraseña Nueva</label>
+      <input type="password" class="form-control" id="new_pass" name="new_pass" required ngModel #new_pass="ngModel">
+      <div *ngIf="new_pass.invalid && (new_pass.dirty || new_pass.touched)" class="alert alert-danger" role="alert">
+        <small *ngIf="new_pass.errors.required">
+          La Contraseña Nueva es invalida
+        </small>
+      </div>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-15">
+      <label for="new_pass2">Repita la Contraseña Nueva</label>
+      <input type="password" class="form-control" id="new_pass2" name="new_pass2" required ngModel #new_pass2="ngModel">
+      <div *ngIf="new_pass2.value != new_pass.value" class="alert alert-danger" role="alert">
+        <small>
+          Las contraseñas deben ser Iguales
+        </small>
+      </div>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right m-b-15">
+      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Cambiar Contraseña</button>
+    </div>
+  </form>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
+</div>

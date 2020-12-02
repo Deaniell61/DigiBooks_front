@@ -1,245 +1,260 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Data Tables</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data Table</li>
-      </ol>
+    <h4 class="page-title">Data Tables</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Table</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
-                      </div>
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>  
-                      
-                    </div> 
-                    <table class="table table-hover table-responsive" [mfData]="userTable | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                        <thead>
-                            <tr>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="firstname">Nombre</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="username">Usuario</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="email">Email</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="types.description">Tipo</mfDefaultSorter></th>
-                                <th style="width:20%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of mf.data">
-                                <td>{{((user.firstname!=null)?user.firstname+' ':'')+((user.lastname!=null)?user.lastname:'')}}</td>
-                                <td>{{((user.username!=null)?user.username:'')}}</td>
-                                <td>{{((user.email!=null)?user.email:'')}}</td>
-                                <td>{{(user.types.description!=null)?user.types.description:''}}</td>
-                                <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" (click)="cargarUser(user.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
-                                  <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)" style="cursor:pointer;"><i class="fa fa-times"></i> Eliminar</button>
-                                  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                              <td colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                              </td>
-                          </tr>
-                          </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal"
+                  style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
+              </div>
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="userTable | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="firstname">Nombre</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="username">Usuario</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="types.description">Tipo</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of mf.data">
+                  <td>{{((user.firstname!=null)?user.firstname+' ':'')+((user.lastname!=null)?user.lastname:'')}}</td>
+                  <td>{{((user.username!=null)?user.username:'')}}</td>
+                  <td>{{((user.email!=null)?user.email:'')}}</td>
+                  <td>{{(user.types.description!=null)?user.types.description:''}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"
+                      (click)="cargarUser(user.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)"
+                      style="cursor:pointer;"><i class="fa fa-times"></i> Eliminar</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Ingreso de datos</h4>
-            </div>
-            <div class="modal-body">
-                <form id="insert-form"  #InsertUserForm="ngForm" (ngSubmit)="insertUser(InsertUserForm.value)">
-                  
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required
-                                ngModel #username="ngModel" placeholder="Username">
-                          <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="username.errors.required">
-                                  El Usuario es invalido
-                              </small>
-                          </div>
-                    </div> 
-                    <div class="form-group col-xs-12 m-b-15">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" name="email" required
-                                  ngModel #email="ngModel" placeholder="email">
-                            <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                                  class="alert alert-danger" role="alert">
-                                <small *ngIf="email.errors.required">
-                                    El Email es invalido
-                                </small>
-                            </div>
-                    </div>
-                    
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="type">Tipo</label>
-                        <select name="type" class="form-control" id="type" required ngModel #type="ngModel" (change)="cargarForanea(type.value)">
-                          <option value="4"></option>
-                          <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
-                        </select>
-                    </div>
-  
-                    <div class="form-group col-xs-12 m-b-15" *ngIf="foreignCombo">
-                        <label for="type">{{foreignData.title}}</label>
-                        <select name="foreign" class="form-control" id="foreign" required ngModel #foreign="ngModel" (change)="getForeign(foreign.value,type.value)">
-                          <option value="null"></option>
-                          <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">{{foreign1.firstname+' '+foreign1.lastname}}</option>
-                        </select>
-                  </div>
-                    
-                    
-  
-                      <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required
-                              ngModel #firstname="ngModel" [(ngModel)]="Data.firstnameData">
-                      <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required
-                              ngModel #lastname="ngModel" [(ngModel)]="Data.lastnameData">
-                      
-                      
-                    <div class="form-group col-xs-12 text-right m-b-15">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
-                </form>
-                
-            </div>
-            <div class="modal-footer" style="border:none;">
-            </div>
-        </div>
-    </div>
-    
-    
-    
-  </div>
-
-<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Edicion de datos</h4>
-          </div>
-          <div class="modal-body" *ngIf="selectedUser">
-              <form id="edit-form"  #EditUserForm="ngForm" (ngSubmit)="updateUser(EditUserForm.value)">
-                  <div *ngIf="selectedUser.picture!=null" class="form-group col-xs-6 col-xs-offset-3">
-                      <img src="{{selectedUser.picture}}" id="imgAvatar" alt="Avatar" style="width:100%;">
-                </div>
-                
-                <div class="form-group col-xs-6 col-xs-offset-3">
-                  <input type="file" id="avatar" (change)="subirImagenes($event,EditUserForm.value,'avatar')"/>
-                  <progress value="0" max="100" id="barra_de_progreso"></progress>
-              </div>
-                
-                <div class="form-group col-xs-12 m-b-15">
-                      <label for="username">Username</label>
-                      <input type="text" class="form-control" id="username" name="username" required
-                              ngModel #username="ngModel" [(ngModel)]="selectedUser.username">
-                        <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                              class="alert alert-danger" role="alert">
-                            <small *ngIf="username.errors.required">
-                                El Usuario es invalido
-                            </small>
-                        </div>
-                  </div> 
-                  <div class="form-group col-xs-12 m-b-15">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required
-                                ngModel #email="ngModel" [(ngModel)]="selectedUser.email">
-                          <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="email.errors.required">
-                                  El Email es invalido
-                              </small>
-                          </div>
-                  </div>
-                  
-                  <div class="form-group col-xs-12 m-b-15">
-                      <label for="type">Tipo</label>
-                      <select name="type" class="form-control" id="type" [(ngModel)]="selectedUser.type" required ngModel #type="ngModel" (change)="cargarForanea(type.value)">
-                        <option value="4"></option>
-                        <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
-                      </select>
-                  </div>
-
-                  <div class="form-group col-xs-12 m-b-15" >
-                      <label for="type">{{foreignData.title}}</label>
-                      <select name="foreign" class="form-control" id="foreign" [(ngModel)]="selectedUser.foreign" ngModel #foreign="ngModel" (change)="getForeign(selectedUser.foreign+'',type.value+'')">
-                        <option value="null"></option>
-                        <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">{{foreign1.firstname+' '+foreign1.lastname}}</option>
-                      </select>
-                </div>
-                  
-                  
-
-                    <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required
-                            ngModel #firstname="ngModel" [(ngModel)]="Data.firstnameData">
-                    <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required
-                            ngModel #lastname="ngModel" [(ngModel)]="Data.lastnameData">
-                    <input type="hidden" class="form-control" id="id" name="id" required
-                            ngModel #id="ngModel" [(ngModel)]="selectedUser.id">
-                    
-                  <div class="form-group col-xs-12 text-right m-b-15">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                  </div>
-              </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-            
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
       </div>
+      <div class="modal-body">
+        <form id="insert-form" #InsertUserForm="ngForm" (ngSubmit)="insertUser(InsertUserForm.value)">
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required ngModel #username="ngModel"
+              placeholder="Username">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="username.errors.required">
+                El Usuario es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required ngModel #email="ngModel"
+              placeholder="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="email.errors.required">
+                El Email es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="type">Tipo</label>
+            <select name="type" class="form-control" id="type" required ngModel #type="ngModel"
+              (change)="cargarForanea(type.value)">
+              <option value="4"></option>
+              <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15" *ngIf="foreignCombo">
+            <label for="type">{{foreignData.title}}</label>
+            <select name="foreign" class="form-control" id="foreign" required ngModel #foreign="ngModel"
+              (change)="getForeign(foreign.value,type.value)">
+              <option value="null"></option>
+              <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">
+                {{foreign1.firstname+' '+foreign1.lastname}}</option>
+            </select>
+          </div>
+
+
+
+          <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required ngModel
+            #firstname="ngModel" [(ngModel)]="Data.firstnameData">
+          <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required ngModel
+            #lastname="ngModel" [(ngModel)]="Data.lastnameData">
+
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+      </div>
+    </div>
   </div>
-  
-  
-  
+
+
+
+</div>
+
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Edicion de datos</h4>
+      </div>
+      <div class="modal-body" *ngIf="selectedUser">
+        <form id="edit-form" #EditUserForm="ngForm" (ngSubmit)="updateUser(EditUserForm.value)">
+          <div *ngIf="selectedUser.picture!=null" class="form-group col-xs-6 col-xs-offset-3">
+            <img src="{{selectedUser.picture}}" id="imgAvatar" alt="Avatar" style="width:100%;">
+          </div>
+
+          <div class="form-group col-xs-6 col-xs-offset-3">
+            <input type="file" id="avatar" (change)="subirImagenes($event,EditUserForm.value,'avatar')" />
+            <progress value="0" max="100" id="barra_de_progreso"></progress>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required ngModel #username="ngModel"
+              [(ngModel)]="selectedUser.username">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="username.errors.required">
+                El Usuario es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required ngModel #email="ngModel"
+              [(ngModel)]="selectedUser.email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="email.errors.required">
+                El Email es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="type">Tipo</label>
+            <select name="type" class="form-control" id="type" [(ngModel)]="selectedUser.type" required ngModel
+              #type="ngModel" (change)="cargarForanea(type.value)">
+              <option value="4"></option>
+              <option *ngFor="let userType of userTypesCombo" value="{{userType.id}}">{{userType.description}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="type">{{foreignData.title}}</label>
+            <select name="foreign" class="form-control" id="foreign" [(ngModel)]="selectedUser.foreign" ngModel
+              #foreign="ngModel" (change)="getForeign(selectedUser.foreign+'',type.value+'')">
+              <option value="null"></option>
+              <option *ngFor="let foreign1 of foreignCombo" value="{{foreign1.id}}">
+                {{foreign1.firstname+' '+foreign1.lastname}}</option>
+            </select>
+          </div>
+
+
+
+          <input type="hidden" class="form-control" id="firstname" *ngIf="Data" name="firstname" required ngModel
+            #firstname="ngModel" [(ngModel)]="Data.firstnameData">
+          <input type="hidden" class="form-control" id="lastname" *ngIf="Data" name="lastname" required ngModel
+            #lastname="ngModel" [(ngModel)]="Data.lastnameData">
+          <input type="hidden" class="form-control" id="id" name="id" required ngModel #id="ngModel"
+            [(ngModel)]="selectedUser.id">
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
+</div>

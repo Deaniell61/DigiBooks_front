@@ -1,274 +1,281 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Data Tables</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data Table</li>
-      </ol>
+    <h4 class="page-title">Data Tables</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Table</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
-                      </div>
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>  
-                      
-                    </div> 
-                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
-                    [mfRowsOnPage]="rowsOnPage">
-                    <thead>
-                            <tr>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="firstname">Nombre</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="address">Direccion</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="phone">Telefono</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="cellphone">Celular</mfDefaultSorter></th>
-                                <th style="width:20%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of mf.data">
-                                <td>{{((data.firstname!=null)?data.firstname+' ':'')+((data.lastname!=null)?data.lastname:'')}}</td>
-                                <td>{{((data.address!=null)?data.address:'')}}</td>
-                                <td>{{((data.phone!=null)?data.phone:'')}}</td>
-                                <td>{{((data.cellphone!=null)?data.cellphone:'')}}</td>
-                                <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
-                                  <button type="button" class="btn btn-danger" (click)="delete(data.id)" style="cursor:pointer;"><i class="fa fa-times"></i> Eliminar</button>
-                                  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                              <td colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                              </td>
-                          </tr>
-                          </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal"
+                  style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
+              </div>
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="firstname">Nombre</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="address">Direccion</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="phone">Telefono</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="cellphone">Celular</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mf.data">
+                  <td>{{((data.firstname!=null)?data.firstname+' ':'')+((data.lastname!=null)?data.lastname:'')}}</td>
+                  <td>{{((data.address!=null)?data.address:'')}}</td>
+                  <td>{{((data.phone!=null)?data.phone:'')}}</td>
+                  <td>{{((data.cellphone!=null)?data.cellphone:'')}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"
+                      (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="delete(data.id)" style="cursor:pointer;"><i
+                        class="fa fa-times"></i> Eliminar</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Ingreso de datos</h4>
-            </div>
-            <div class="modal-body">
-                <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="insert(InsertForm.value)">
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="firstname">Nombre</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" required
-                                ngModel #firstname="ngModel" placeholder="firstname">
-                          <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="firstname.errors.required">
-                                  El Nombre es invalido
-                              </small>
-                          </div>
-                    </div> 
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="lastname">Apellido</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" required
-                                ngModel #lastname="ngModel" placeholder="lastname">
-                          <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="lastname.errors.required">
-                                  El Apellido es invalido
-                              </small>
-                          </div>
-                    </div>
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="address">Direccion</label>
-                        <input type="text" class="form-control" id="address" name="address" required
-                                ngModel #address="ngModel" placeholder="address">
-                          <div *ngIf="address.invalid && (address.dirty || address.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="address.errors.required">
-                                  El Direccion es invalido
-                              </small>
-                          </div>
-                    </div>
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="phone">Telefono</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required
-                                ngModel #phone="ngModel" placeholder="phone">
-                          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="phone.errors.required">
-                                  El Telefono es invalido
-                              </small>
-                          </div>
-                    </div>
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="cellphone">Celular</label>
-                        <input type="text" class="form-control" id="cellphone" name="cellphone" required
-                                ngModel #cellphone="ngModel" placeholder="cellphone">
-                          <div *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="cellphone.errors.required">
-                                  El Celular es invalido
-                              </small>
-                          </div>
-                    </div>
-
-
-                    <div class="form-group col-xs-12 m-b-15">
-                      <label for="personal_code">Codigo Personal</label>
-                      <input type="text" class="form-control" id="personal_code" name="personal_code" required
-                              ngModel #personal_code="ngModel" placeholder="personal_code" title="Codigo personal dado por el ministerio de educacion">
-                        <div *ngIf="personal_code.invalid && (personal_code.dirty || personal_code.touched)"
-                              class="alert alert-danger" role="alert">
-                            <small *ngIf="personal_code.errors.required">
-                                El Celular es invalido
-                            </small>
-                        </div>
-                  </div>
-                    
-                      
-                    <div class="form-group col-xs-12 text-right m-b-15">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
-                </form>
-                
-            </div>
-            <div class="modal-footer" style="border:none;">
-               
-            </div>
-        </div>
-    </div>
-    
-    
-    
-  </div>
-
-<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Edicion de datos</h4>
-          </div>
-          <div class="modal-body" *ngIf="selectedData">
-              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
-                  <div class="form-group col-xs-12 m-b-15">
-                      <label for="firstname">Nombre</label>
-                      <input type="text" class="form-control" id="firstname" name="firstname" required
-                              ngModel #firstname="ngModel" [(ngModel)]="selectedData.firstname">
-                        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
-                              class="alert alert-danger" role="alert">
-                            <small *ngIf="firstname.errors.required">
-                                El Nombre es invalido
-                            </small>
-                        </div>
-                  </div> 
-                  <div class="form-group col-xs-12 m-b-15">
-                      <label for="lastname">Apellido</label>
-                      <input type="text" class="form-control" id="lastname" name="lastname" required
-                              ngModel #lastname="ngModel" [(ngModel)]="selectedData.lastname">
-                        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
-                              class="alert alert-danger" role="alert">
-                            <small *ngIf="lastname.errors.required">
-                                El Apellido es invalido
-                            </small>
-                        </div>
-                  </div> 
-
-                  <div class="form-group col-xs-12 m-b-15">
-                        <label for="address">Direccion</label>
-                        <input type="text" class="form-control" id="address" name="address" required
-                                ngModel #address="ngModel" [(ngModel)]="selectedData.address">
-                          <div *ngIf="address.invalid && (address.dirty || address.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="address.errors.required">
-                                  La Direccion es invalido
-                              </small>
-                          </div>
-                  </div>
-                  <div class="form-group col-xs-12 m-b-15">
-                        <label for="phone">Telefono</label>
-                        <input type="text" class="form-control" id="phone" name="phone"
-                                ngModel #phone="ngModel" [(ngModel)]="selectedData.phone">
-                          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="phone.errors.required">
-                                  El Telefono es invalido
-                              </small>
-                          </div>
-                  </div>
-                  <div class="form-group col-xs-12 m-b-15">
-                        <label for="cellphone">Celular</label>
-                        <input type="text" class="form-control" id="cellphone" name="cellphone"
-                                ngModel #cellphone="ngModel" [(ngModel)]="selectedData.cellphone">
-                          <div *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="cellphone.errors.required">
-                                  El Celular es invalido
-                              </small>
-                          </div>
-                  </div>
-                  
-                 
-                  
-                    <input type="hidden" class="form-control" id="id" name="id" required
-                            ngModel #id="ngModel" [(ngModel)]="selectedData.id">
-                    
-                  <div class="form-group col-xs-12 text-right m-b-15">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                  </div>
-              </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-             
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
       </div>
+      <div class="modal-body">
+        <form id="insert-form" #InsertForm="ngForm" (ngSubmit)="insert(InsertForm.value)">
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="firstname">Nombre</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" required ngModel
+              #firstname="ngModel" placeholder="firstname">
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="firstname.errors.required">
+                El Nombre es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="lastname">Apellido</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" required ngModel #lastname="ngModel"
+              placeholder="lastname">
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="lastname.errors.required">
+                El Apellido es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="address">Direccion</label>
+            <input type="text" class="form-control" id="address" name="address" required ngModel #address="ngModel"
+              placeholder="address">
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="address.errors.required">
+                El Direccion es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="phone">Telefono</label>
+            <input type="text" class="form-control" id="phone" name="phone" required ngModel #phone="ngModel"
+              placeholder="phone">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="phone.errors.required">
+                El Telefono es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="cellphone">Celular</label>
+            <input type="text" class="form-control" id="cellphone" name="cellphone" required ngModel
+              #cellphone="ngModel" placeholder="cellphone">
+            <div *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="cellphone.errors.required">
+                El Celular es invalido
+              </small>
+            </div>
+          </div>
+
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="personal_code">Codigo Personal</label>
+            <input type="text" class="form-control" id="personal_code" name="personal_code" required ngModel
+              #personal_code="ngModel" placeholder="personal_code"
+              title="Codigo personal dado por el ministerio de educacion">
+            <div *ngIf="personal_code.invalid && (personal_code.dirty || personal_code.touched)"
+              class="alert alert-danger" role="alert">
+              <small *ngIf="personal_code.errors.required">
+                El Celular es invalido
+              </small>
+            </div>
+          </div>
+
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
   </div>
-  
-  
-  
+
+
+
+</div>
+
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Edicion de datos</h4>
+      </div>
+      <div class="modal-body" *ngIf="selectedData">
+        <form id="edit-form" #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="firstname">Nombre</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" required ngModel
+              #firstname="ngModel" [(ngModel)]="selectedData.firstname">
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="firstname.errors.required">
+                El Nombre es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="lastname">Apellido</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" required ngModel #lastname="ngModel"
+              [(ngModel)]="selectedData.lastname">
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="lastname.errors.required">
+                El Apellido es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="address">Direccion</label>
+            <input type="text" class="form-control" id="address" name="address" required ngModel #address="ngModel"
+              [(ngModel)]="selectedData.address">
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="address.errors.required">
+                La Direccion es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="phone">Telefono</label>
+            <input type="text" class="form-control" id="phone" name="phone" ngModel #phone="ngModel"
+              [(ngModel)]="selectedData.phone">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="phone.errors.required">
+                El Telefono es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="cellphone">Celular</label>
+            <input type="text" class="form-control" id="cellphone" name="cellphone" ngModel #cellphone="ngModel"
+              [(ngModel)]="selectedData.cellphone">
+            <div *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="cellphone.errors.required">
+                El Celular es invalido
+              </small>
+            </div>
+          </div>
+
+
+
+          <input type="hidden" class="form-control" id="id" name="id" required ngModel #id="ngModel"
+            [(ngModel)]="selectedData.id">
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
 
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
-  
+</div>

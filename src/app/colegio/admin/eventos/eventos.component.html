@@ -1,263 +1,272 @@
 <div class="row bg-title">
   <div class="col-lg-12">
-      <h4 class="page-title">Data Tables</h4>
-      <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data Table</li>
-      </ol>
+    <h4 class="page-title">Data Tables</h4>
+    <ol class="breadcrumb">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Table</li>
+    </ol>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 <div class="card mb-3">
   <div class="card-body">
 
-      <div class="table-responsive">
-          <div class="box-body">
-            
-              <div class="col-sm-12">
-                <div class="white-box">
-                    <h3>Data Table</h3>
-                    <div class="row">
-                      <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal" style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
-                      </div>
-                      <div class="col-md-3 col-xs-offset-5">
-                          <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                        </div>  
-                      
-                    </div> 
-                    <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
-                             [mfRowsOnPage]="rowsOnPage">
-                        <thead>
-                            <tr>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="title">Nombre</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="finishdate">Fecha Final</mfDefaultSorter></th>
-                                <th style="width:20%;">
-                                    <mfDefaultSorter by="description">Tipo</mfDefaultSorter></th>
-                                <th style="width:10%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of mf.data">
-                              <td>{{((data.title!=null)?data.title:'')}}</td>
-                              <td>{{((data.finishdate!=null)?data.finishdate:'')}}</td>
-                              <td>{{((data.types.description!=null)?data.types.description:'')}}</td>
-                                <td>
+    <div class="table-responsive">
+      <div class="box-body">
 
-                                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
-                                  <button type="button" class="btn btn-danger" (click)="delete(data.id)" style="cursor:pointer;"><i class="fa fa-times"></i> Eliminar</button>
-                                  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                              <td colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                              </td>
-                          </tr>
-                          </tfoot>
-                    </table>
-                </div>
-            </div> 
-            
+        <div class="col-sm-12">
+          <div class="white-box">
+            <h3>Data Table</h3>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#insertModal"
+                  style="cursor:pointer;"><i class="fa fa-plus"></i>Agregar Nuevo</button>
+              </div>
+              <div class="col-md-3 col-xs-offset-5">
+                <input type="text" class="form-control" placeholder="Busqueda" [(ngModel)]="search"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <table class="table table-hover table-responsive" [mfData]="Table | filter : search" #mf="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="title">Nombre</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="finishdate">Fecha Final</mfDefaultSorter>
+                  </th>
+                  <th style="width:20%;">
+                    <mfDefaultSorter by="description">Tipo</mfDefaultSorter>
+                  </th>
+                  <th style="width:10%;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mf.data">
+                  <td>{{((data.title!=null)?data.title:'')}}</td>
+                  <td>{{((data.finishdate!=null)?data.finishdate:'')}}</td>
+                  <td>{{((data.types.description!=null)?data.types.description:'')}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"
+                      (click)="cargarSingle(data.id)" style="cursor:pointer;"><i class="fa fa-edit"></i> Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="delete(data.id)" style="cursor:pointer;"><i
+                        class="fa fa-times"></i> Eliminar</button>
+
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
+        </div>
+
       </div>
+    </div>
   </div>
   <div class="card-footer small text-muted">
-      Updated yesterday at 11:59 PM
+    Updated yesterday at 11:59 PM
   </div>
 </div>
 <simple-notifications [options]="options"></simple-notifications>
 
 
-<div id="insertModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Ingreso de datos</h4>
-            </div>
-            <div class="modal-body">
-                <form id="insert-form"  #InsertForm="ngForm" (ngSubmit)="insert(InsertForm.value)">
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="title">Titulo</label>
-                        <input type="text" class="form-control" id="title" name="title" required
-                                ngModel #title="ngModel" placeholder="title">
-                          <div *ngIf="title.invalid && (title.dirty || title.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="title.errors.required">
-                                  El Titulo es invalido
-                              </small>
-                          </div>
-                    </div> 
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="description">Descripcion</label>
-                        <input type="text" class="form-control" id="description" name="description" required
-                                ngModel #description="ngModel" placeholder="description">
-                          <div *ngIf="description.invalid && (description.dirty || description.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="description.errors.required">
-                                  La descripcion es invalido
-                              </small>
-                          </div>
-                    </div> 
-
-                    <div class="form-group col-xs-6 m-b-6">
-                        <label for="begindate">Fecha de Inicio</label>
-                        <input type="date" class="form-control" [(ngModel)]="beginDate" id="begindate" name="begindate" required
-                                ngModel #begindate="ngModel" placeholder="begindate">
-                          <div *ngIf="begindate.invalid && (begindate.dirty || begindate.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="begindate.errors.required">
-                                  La Fecha de Inicio es invalido
-                              </small>
-                          </div>
-                    </div> 
-
-                    <div class="form-group col-xs-6 m-b-6">
-                        <label for="finishdate">Fecha de Fin</label>
-                        <input type="date" class="form-control" [(ngModel)]="endDate" id="finishdate" name="finishdate" required
-                                ngModel #finishdate="ngModel" placeholder="finishdate">
-                          <div *ngIf="finishdate.invalid && (finishdate.dirty || finishdate.touched)"
-                                class="alert alert-danger" role="alert">
-                              <small *ngIf="finishdate.errors.required">
-                                  La Fecha de Fin es invalido
-                              </small>
-                          </div>
-                    </div> 
-
-                    <div class="form-group col-xs-12 m-b-15">
-                        <label for="type">Tipo</label>
-                        <select type="text" class="form-control" id="type" name="type" required
-                                ngModel #type="ngModel">
-                                <option value="" selected></option>
-                              <option *ngFor="let Data of parentCombo" value="{{Data.id}}">{{((Data.description!=null)?Data.description:'')}}</option>
-                        </select>
-                          
-                    </div>
-                      
-                    <div class="form-group col-xs-12 text-right m-b-15">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
-                </form>
-                
-            </div>
-            <div class="modal-footer" style="border:none;">
-               
-            </div>
-        </div>
-    </div>
-    
-    
-    
-  </div>
-
-<div id="editModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="insertModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Edicion de datos</h4>
-          </div>
-          <div class="modal-body" *ngIf="selectedData">
-              <form id="edit-form"  #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
-                  <div *ngIf="selectedData.avatar!=null" class="form-group col-xs-6 col-xs-offset-3">
-                      <img src="{{selectedData.avatar}}" id="imgAvatar" alt="Avatar" style="width:100%;">
-                  </div>
-                  
-                  <div class="form-group col-xs-6 col-xs-offset-3">
-                    <input type="file" id="avatar" (change)="subirImagenes($event,EditForm.value,'avatar')"/>
-                    <progress value="0" max="100" id="barra_de_progreso"></progress>
-                  </div>
-                  <div class="form-group col-xs-12 m-b-15">
-                    <label for="title">Titulo</label>
-                    <input type="text" class="form-control" id="title" name="title" required
-                            ngModel #title="ngModel" placeholder="title" [(ngModel)]="selectedData.title">
-                      <div *ngIf="title.invalid && (title.dirty || title.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="title.errors.required">
-                              El Titulo es invalido
-                          </small>
-                      </div>
-                </div> 
-                <div class="form-group col-xs-12 m-b-15">
-                    <label for="description">Descripcion</label>
-                    <input type="text" class="form-control" id="description" name="description" required
-                            ngModel #description="ngModel" placeholder="description" [(ngModel)]="selectedData.description">
-                      <div *ngIf="description.invalid && (description.dirty || description.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="description.errors.required">
-                              La descripcion es invalido
-                          </small>
-                      </div>
-                </div> 
-
-                <div class="form-group col-xs-6 m-b-6">
-                    <label for="begindate">Fecha de Inicio</label>
-                    <input type="date" class="form-control" id="begindate" name="begindate" required
-                            ngModel #begindate="ngModel"  [(ngModel)]="selectedData.begindate">
-                      <div *ngIf="begindate.invalid && (begindate.dirty || begindate.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="begindate.errors.required">
-                              La Fecha de Inicio es invalido
-                          </small>
-                      </div>
-                </div> 
-
-                <div class="form-group col-xs-6 m-b-6">
-                    <label for="finishdate">Fecha de Fin</label>
-                    <input type="date" class="form-control" id="finishdate" name="finishdate" required
-                            ngModel #finishdate="ngModel"  [(ngModel)]="selectedData.finishdate">
-                      <div *ngIf="finishdate.invalid && (finishdate.dirty || finishdate.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="finishdate.errors.required">
-                              La Fecha de Fin es invalido
-                          </small>
-                      </div>
-                </div> 
-
-                <div class="form-group col-xs-12 m-b-15">
-                    <label for="type">Tipo</label>
-                    <select type="text" class="form-control" id="type" name="type" required
-                            ngModel #type="ngModel" [(ngModel)]="selectedData.type">
-                            <option value="" selected></option>
-                          <option *ngFor="let Data of parentCombo" value="{{Data.id}}">{{((Data.description!=null)?Data.description:'')}}</option>
-                    </select>
-                      
-                </div>
-                  
-                  
-                    <input type="hidden" class="form-control" id="id" name="id" required
-                            ngModel #id="ngModel" [(ngModel)]="selectedData.id">
-                    
-                  <div class="form-group col-xs-12 text-right m-b-15">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close" ></i> Cancel</button>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
-                  </div>
-              </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-             
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ingreso de datos</h4>
       </div>
+      <div class="modal-body">
+        <form id="insert-form" #InsertForm="ngForm" (ngSubmit)="insert(InsertForm.value)">
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="title">Titulo</label>
+            <input type="text" class="form-control" id="title" name="title" required ngModel #title="ngModel"
+              placeholder="title">
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="title.errors.required">
+                El Titulo es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="description">Descripcion</label>
+            <input type="text" class="form-control" id="description" name="description" required ngModel
+              #description="ngModel" placeholder="description">
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="description.errors.required">
+                La descripcion es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-6 m-b-6">
+            <label for="begindate">Fecha de Inicio</label>
+            <input type="date" class="form-control" [(ngModel)]="beginDate" id="begindate" name="begindate" required
+              ngModel #begindate="ngModel" placeholder="begindate">
+            <div *ngIf="begindate.invalid && (begindate.dirty || begindate.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="begindate.errors.required">
+                La Fecha de Inicio es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-6 m-b-6">
+            <label for="finishdate">Fecha de Fin</label>
+            <input type="date" class="form-control" [(ngModel)]="endDate" id="finishdate" name="finishdate" required
+              ngModel #finishdate="ngModel" placeholder="finishdate">
+            <div *ngIf="finishdate.invalid && (finishdate.dirty || finishdate.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="finishdate.errors.required">
+                La Fecha de Fin es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="type">Tipo</label>
+            <select type="text" class="form-control" id="type" name="type" required ngModel #type="ngModel">
+              <option value="" selected></option>
+              <option *ngFor="let Data of parentCombo" value="{{Data.id}}">
+                {{((Data.description!=null)?Data.description:'')}}</option>
+            </select>
+
+          </div>
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
   </div>
-  
-  
-  
+
+
+
+</div>
+
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Edicion de datos</h4>
+      </div>
+      <div class="modal-body" *ngIf="selectedData">
+        <form id="edit-form" #EditForm="ngForm" (ngSubmit)="update(EditForm.value)">
+          <div *ngIf="selectedData.avatar!=null" class="form-group col-xs-6 col-xs-offset-3">
+            <img src="{{selectedData.avatar}}" id="imgAvatar" alt="Avatar" style="width:100%;">
+          </div>
+
+          <div class="form-group col-xs-6 col-xs-offset-3">
+            <input type="file" id="avatar" (change)="subirImagenes($event,EditForm.value,'avatar')" />
+            <progress value="0" max="100" id="barra_de_progreso"></progress>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="title">Titulo</label>
+            <input type="text" class="form-control" id="title" name="title" required ngModel #title="ngModel"
+              placeholder="title" [(ngModel)]="selectedData.title">
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger" role="alert">
+              <small *ngIf="title.errors.required">
+                El Titulo es invalido
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="description">Descripcion</label>
+            <input type="text" class="form-control" id="description" name="description" required ngModel
+              #description="ngModel" placeholder="description" [(ngModel)]="selectedData.description">
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="description.errors.required">
+                La descripcion es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-6 m-b-6">
+            <label for="begindate">Fecha de Inicio</label>
+            <input type="date" class="form-control" id="begindate" name="begindate" required ngModel
+              #begindate="ngModel" [(ngModel)]="selectedData.begindate">
+            <div *ngIf="begindate.invalid && (begindate.dirty || begindate.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="begindate.errors.required">
+                La Fecha de Inicio es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-6 m-b-6">
+            <label for="finishdate">Fecha de Fin</label>
+            <input type="date" class="form-control" id="finishdate" name="finishdate" required ngModel
+              #finishdate="ngModel" [(ngModel)]="selectedData.finishdate">
+            <div *ngIf="finishdate.invalid && (finishdate.dirty || finishdate.touched)" class="alert alert-danger"
+              role="alert">
+              <small *ngIf="finishdate.errors.required">
+                La Fecha de Fin es invalido
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group col-xs-12 m-b-15">
+            <label for="type">Tipo</label>
+            <select type="text" class="form-control" id="type" name="type" required ngModel #type="ngModel"
+              [(ngModel)]="selectedData.type">
+              <option value="" selected></option>
+              <option *ngFor="let Data of parentCombo" value="{{Data.id}}">
+                {{((Data.description!=null)?Data.description:'')}}</option>
+            </select>
+
+          </div>
+
+
+          <input type="hidden" class="form-control" id="id" name="id" required ngModel #id="ngModel"
+            [(ngModel)]="selectedData.id">
+
+          <div class="form-group col-xs-12 text-right m-b-15">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>
+              Cancel</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" style="border:none;">
+
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
 
 <div class="modal fade" id="Loading">
-    <div class="modal-dialog">
-      <div class="text-center" style="margin-top:50%;">
-  <app-loader></app-loader>
-      </div>
+  <div class="modal-dialog">
+    <div class="text-center" style="margin-top:50%;">
+      <app-loader></app-loader>
     </div>
   </div>
-  
+</div>
