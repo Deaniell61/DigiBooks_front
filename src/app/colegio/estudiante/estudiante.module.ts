@@ -23,31 +23,34 @@ import { CursosService } from './_services/cursos.service';
 import { CursoDetalleService } from './_services/curso-detalle.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosService } from './../admin/_services/usuarios.service';
+import { DigibooksComponent } from './digibooks/digibooks.component';
+import { ComponentesModule } from './../componentes/componentes.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    DataTableModule, 
+    DataTableModule,
     ChartsModule,
     FileUploadModule,
-    SimpleNotificationsModule.forRoot(),  
-    Ng2SearchPipeModule, 
+    SimpleNotificationsModule.forRoot(),
+    Ng2SearchPipeModule,
+    ComponentesModule,
     Ng2DragDropModule.forRoot(),
-    LoadersCssModule,  
+    LoadersCssModule,
     CalendarModule,
     EstudianteRoutingModule
   ],
   declarations: [
-    EstudianteComponent, 
-    DashboardComponent, 
-    LoaderComponent, 
-    CursosComponent, 
-    CursoDetalleComponent, ProfileComponent
+    EstudianteComponent,
+    DashboardComponent,
+    LoaderComponent,
+    CursosComponent,
+    CursoDetalleComponent, ProfileComponent, DigibooksComponent
   ],
   providers: [
     EventsService,
     UsuariosService,
-    StudentsService, 
+    StudentsService,
     CursosService,
     CursoDetalleService
   ]

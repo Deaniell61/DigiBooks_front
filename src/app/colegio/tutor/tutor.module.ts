@@ -28,28 +28,31 @@ import { CobrosComponent } from './cobros/cobros.component';
 import { CobrosService } from './_services/cobros.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosService } from './../admin/_services/usuarios.service';
+import { DigibooksComponent } from './digibooks/digibooks.component';
+import { ComponentesModule } from './../componentes/componentes.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    DataTableModule, 
+    DataTableModule,
     ChartsModule,
     FileUploadModule,
-    SimpleNotificationsModule.forRoot(),  
-    Ng2SearchPipeModule, 
+    SimpleNotificationsModule.forRoot(),
+    Ng2SearchPipeModule,
     Ng2DragDropModule.forRoot(),
-    LoadersCssModule,  
-    CalendarModule, 
+    LoadersCssModule,
+    ComponentesModule,
+    CalendarModule,
     TutorRoutingModule
   ],
   declarations: [
-    TutorComponent, 
-    DashboardComponent, 
-    LoaderComponent, 
-    AlumnosComponent, 
-    CursosAlumnoComponent, 
-    TareasCursoComponent, 
-    CobrosComponent, ProfileComponent
+    TutorComponent,
+    DashboardComponent,
+    LoaderComponent,
+    AlumnosComponent,
+    CursosAlumnoComponent,
+    TareasCursoComponent,
+    CobrosComponent, ProfileComponent, DigibooksComponent
   ],
   providers: [
     EventsService,

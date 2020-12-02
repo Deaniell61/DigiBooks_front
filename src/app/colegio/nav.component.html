@@ -1,302 +1,331 @@
 <div id="wrapper">
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-      <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg "  href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-          <div class="top-left-part">
-              <a class="logo" href="index.html"><b><img src="../assets/images/fs-icon.png" alt="Home"></b><span id="apple-admin" class="hidden-xs"><img src="../assets/images/fs.png" alt="Home"></span></a>
-          </div>
-          <ul class="nav navbar-top-links navbar-left">
-            <li><a (click)="hideNav()" class="open-close hidden-xs waves-effect waves-light"><i class=" ti-menu"></i></a></li>
-            
-            <!-- /.dropdown -->
-            <li class="dropdown" *ngIf="type=='tutor'" (click)="updateNotifications()"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-bell"></i> <span class="badge badge-xs badge-success" *ngIf="nNotifications>0">{{nNotifications}}</span></a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li *ngFor="let data of notifications">
-                        <a (click)="updateNotification(data.id)" [routerLink]="[ './tutor/alumnos' , 1 ]">
-                            <div> <i *ngIf="data.type==2" class="ti-check fa-fw"></i> <i *ngIf="data.type==1" class="ti-folder fa-fw"></i> {{data.title}}  </div>
-                        </a>
-                      <div class="divider"style="padding: 0px;margin: 0px;"></div>
-                    </li>
-                    
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
-        </ul>
-          <ul class="nav navbar-top-links navbar-right pull-right">
-              <li>
-                  <form role="search" class="app-search hidden-xs">
-                      <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-              </li>
-              <li class="dropdown">
-                  <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{((picture!='null')?(picture):'https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png')}}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{((firstname!="null")?(firstname+' '):'')+((lastname!="null")?lastname:user)}}</b> </a>
-                  <ul class="dropdown-menu dropdown-user">
-                      <li *ngIf="type=='admin'"><a routerLinkActive="active"
-                        [routerLink]="[ './admin/profile' ]"><i class="ti-user"></i> Mi Perfil</a></li>
-                      <li *ngIf="type=='estudiante'"><a routerLinkActive="active"
-                        [routerLink]="[ './estudiante/profile' ]"><i class="ti-user"></i> Mi Perfil</a></li>
-                      <li *ngIf="type=='tutor'"><a routerLinkActive="active"
-                        [routerLink]="[ './tutor/profile' ]"><i class="ti-user"></i> Mi Perfil</a></li>
-                      <li *ngIf="type=='maestro'"><a routerLinkActive="active"
-                        [routerLink]="[ './maestro/profile' ]"><i class="ti-user"></i> Mi Perfil</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="/" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
-                  </ul>
-                  <!-- /.dropdown-user -->
-              </li>
-              <!-- /.dropdown -->
-          </ul>
+    <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)"
+        data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+      <div class="top-left-part">
+        <a class="logo" href="index.html"><b><img src="../assets/images/fs-icon.png" alt="Home"></b><span
+            id="apple-admin" class="hidden-xs"><img src="../assets/images/fs.png" alt="Home"></span></a>
       </div>
-      <!-- /.navbar-header -->
-      <!-- /.navbar-top-links -->
-      <!-- /.navbar-static-side -->
+      <ul class="nav navbar-top-links navbar-left">
+        <li><a (click)="hideNav()" class="open-close hidden-xs waves-effect waves-light"><i class=" ti-menu"></i></a>
+        </li>
+
+        <!-- /.dropdown -->
+        <li class="dropdown" *ngIf="type=='tutor'" (click)="updateNotifications()"> <a
+            class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-bell"></i>
+            <span class="badge badge-xs badge-success" *ngIf="nNotifications>0">{{nNotifications}}</span></a>
+          <ul class="dropdown-menu dropdown-alerts">
+            <li *ngFor="let data of notifications">
+              <a (click)="updateNotification(data.id)" [routerLink]="[ './tutor/alumnos' , 1 ]">
+                <div> <i *ngIf="data.type==2" class="ti-check fa-fw"></i> <i *ngIf="data.type==1"
+                    class="ti-folder fa-fw"></i> {{data.title}} </div>
+              </a>
+              <div class="divider" style="padding: 0px;margin: 0px;"></div>
+            </li>
+
+          </ul>
+          <!-- /.dropdown-alerts -->
+        </li>
+      </ul>
+      <ul class="nav navbar-top-links navbar-right pull-right">
+        <li>
+          <form role="search" class="app-search hidden-xs">
+            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
+          </form>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img
+              src="{{((picture!='null')?(picture):'https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png')}}"
+              alt="user-img" width="36" class="img-circle"><b
+              class="hidden-xs">{{((firstname!="null")?(firstname+' '):'')+((lastname!="null")?lastname:user)}}</b> </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li *ngIf="type=='admin'"><a routerLinkActive="active" [routerLink]="[ './admin/profile' ]"><i
+                  class="ti-user"></i> Mi Perfil</a></li>
+            <li *ngIf="type=='estudiante'"><a routerLinkActive="active" [routerLink]="[ './estudiante/profile' ]"><i
+                  class="ti-user"></i> Mi Perfil</a></li>
+            <li *ngIf="type=='tutor'"><a routerLinkActive="active" [routerLink]="[ './tutor/profile' ]"><i
+                  class="ti-user"></i> Mi Perfil</a></li>
+            <li *ngIf="type=='maestro'"><a routerLinkActive="active" [routerLink]="[ './maestro/profile' ]"><i
+                  class="ti-user"></i> Mi Perfil</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+          </ul>
+          <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+      </ul>
+    </div>
+    <!-- /.navbar-header -->
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
   </nav>
-  
+
   <div class="navbar-default sidebar nicescroll" role="navigation">
     <div class="sidebar-nav navbar-collapse collapse">
-    <!-- inicia menu tutores -->  
+      <!-- inicia menu tutores -->
       <ul *ngIf="type=='tutor'" class="nav" id="side-menu">
         <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-<button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-</span> </div>
-            <!-- /input-group -->
-        </li>
-        <li  class="nav-small-cap">Tutor</li>
-        <li> <a routerLinkActive="active"
-          [routerLink]="[ './tutor/dashboard' ]" class="waves-effect"><i class="icon-speedometer fa-fw"></i> Dashboard</a>
-        </li>
-        <li> <a routerLinkActive="active"
-          [routerLink]="[ './tutor/alumnos' , 1 ]" class="waves-effect"><i class="fa fa-user fa-fw"></i> Alumnos</a>
-        </li>
-    </ul>
-<!-- fin menu tutores -->
-<!-- inicia menu maestros -->
-    <ul *ngIf="type=='maestro'" class="nav" id="side-menu">
-      <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-        <div class="input-group custom-search-form">
-            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-        <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-        </span> </div>
-        <!-- /input-group -->
-    </li>
-    <li  class="nav-small-cap">Maestro</li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './maestro/dashboard' ]" class="waves-effect"><i class="icon-speedometer fa-fw"></i> Dashboard</a>
-    </li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './maestro/cursos' , 1 ]" class="waves-effect"><i class="fa fa-user fa-fw"></i> Alumnos</a>
-    </li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './maestro/cursos' , 2 ]" class="waves-effect"><i class="fa fa-edit fa-fw"></i> Tareas</a>
-    </li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './maestro/cursos' , 3 ]" class="waves-effect"><i class="fa fa-check fa-fw"></i> Asistencia</a>
-    </li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './maestro/cursos' , 4 ]" class="waves-effect"><i class="fa fa-file-pdf-o fa-fw"></i> Reportar</a>
-    </li>
-      
-      
-    </ul>
-       <!-- fin menu maestros -->
-<!-- inicia menu estudiante -->
-    <ul *ngIf="type=='estudiante'" class="nav" id="side-menu">
-      <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-        <div class="input-group custom-search-form">
-            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-        <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-        </span> </div>
-        <!-- /input-group -->
-    </li>
-    <li  class="nav-small-cap">Estudiante</li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './estudiante/dashboard' ]" class="waves-effect"><i class="icon-speedometer fa-fw"></i> Dashboard</a>
-    </li>
-    <li> <a routerLinkActive="active"
-      [routerLink]="[ './estudiante/cursos' , 1 ]" class="waves-effect"><i class="fa fa-edit fa-fw"></i> Cursos</a>
-    </li>
-    <li> <a (click)="impReporte()" class="waves-effect"><i class="fa fa-file-pdf-o fa-fw"></i> Reporte Notas</a>
-    </li>
-    </ul>
-   <!-- fin menu estudiantes -->
-<!-- inicia menu administrador -->
-    <ul *ngIf="type=='admin'" class="nav" id="side-menu">
-      <li class="sidebar-search hidden-sm hidden-md hidden-lg">
           <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-          <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-          </span> </div>
+            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+              <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
           <!-- /input-group -->
-      </li>
-      <li  class="nav-small-cap">Administrador</li>
-      <li> <a routerLinkActive="active"
-        [routerLink]="[ './admin/dashboard' ]" class="waves-effect"><i class="icon-speedometer fa-fw"></i> Dashboard</a>
-      </li>
-      <li data-toggle="collapse" href="#Users"> <a  class="waves-effect"><i class=" fa fa-user fa-fw"></i> Usuarios<span class="fa arrow"></span>  </a>
-      </li><ul class="collapse nav nav-second-level" id="Users">
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/usuarios' ]" class="waves-effect"><i class="icon-user fa-fw"></i> Usuarios</a>
+        </li>
+        <li class="nav-small-cap">Tutor</li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './tutor/dashboard' ]" class="waves-effect"><i
+              class="icon-speedometer fa-fw"></i> Dashboard</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './tutor/alumnos' , 1 ]" class="waves-effect"><i
+              class="fa fa-user fa-fw"></i> Alumnos</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './tutor/digibooks' ]" class="waves-effect"><i
+              class="fa fa-file-pdf-o fa-fw"></i> Digibooks</a>
+        </li>
+      </ul>
+      <!-- fin menu tutores -->
+      <!-- inicia menu maestros -->
+      <ul *ngIf="type=='maestro'" class="nav" id="side-menu">
+        <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+              <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
+          <!-- /input-group -->
+        </li>
+        <li class="nav-small-cap">Maestro</li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/dashboard' ]" class="waves-effect"><i
+              class="icon-speedometer fa-fw"></i> Dashboard</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/cursos' , 1 ]" class="waves-effect"><i
+              class="fa fa-user fa-fw"></i> Alumnos</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/cursos' , 2 ]" class="waves-effect"><i
+              class="fa fa-edit fa-fw"></i> Tareas</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/cursos' , 3 ]" class="waves-effect"><i
+              class="fa fa-check fa-fw"></i> Asistencia</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/cursos' , 4 ]" class="waves-effect"><i
+              class="fa fa-file-pdf-o fa-fw"></i> Reportar</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './maestro/digibooks' ]" class="waves-effect"><i
+              class="fa fa-file-pdf-o fa-fw"></i> Digibooks</a>
+        </li>
+
+
+      </ul>
+      <!-- fin menu maestros -->
+      <!-- inicia menu estudiante -->
+      <ul *ngIf="type=='estudiante'" class="nav" id="side-menu">
+        <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+              <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
+          <!-- /input-group -->
+        </li>
+        <li class="nav-small-cap">Estudiante</li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './estudiante/dashboard' ]" class="waves-effect"><i
+              class="icon-speedometer fa-fw"></i> Dashboard</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './estudiante/cursos' , 1 ]" class="waves-effect"><i
+              class="fa fa-edit fa-fw"></i> Cursos</a>
+        </li>
+        <li> <a (click)="impReporte()" class="waves-effect"><i class="fa fa-file-pdf-o fa-fw"></i> Reporte Notas</a>
+        </li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './estudiante/digibooks' ]" class="waves-effect"><i
+              class="fa fa-file-pdf-o fa-fw"></i> Digibooks</a>
+        </li>
+      </ul>
+      <!-- fin menu estudiantes -->
+      <!-- inicia menu administrador -->
+      <ul *ngIf="type=='admin'" class="nav" id="side-menu">
+        <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+              <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
+          <!-- /input-group -->
+        </li>
+        <li class="nav-small-cap">Administrador</li>
+        <li> <a routerLinkActive="active" [routerLink]="[ './admin/dashboard' ]" class="waves-effect"><i
+              class="icon-speedometer fa-fw"></i> Dashboard</a>
+        </li>
+        <li data-toggle="collapse" href="#Users"> <a class="waves-effect"><i class=" fa fa-user fa-fw"></i>
+            Usuarios<span class="fa arrow"></span> </a>
+        </li>
+        <ul class="collapse nav nav-second-level" id="Users">
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/usuarios' ]" class="waves-effect"><i
+                class="icon-user fa-fw"></i> Usuarios</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/usuarios-tipo' ]" class="waves-effect"><i class="icon-user fa-fw"></i> Tipos de Usuarios</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/usuarios-tipo' ]" class="waves-effect"><i
+                class="icon-user fa-fw"></i> Tipos de Usuarios</a>
           </li>
         </ul>
-      
-      <li data-toggle="collapse" href="#Elements"> <a  class="waves-effect"><i class=" fa fa-gear fa-fw"></i> Administracion<span class="fa arrow"></span>  </a>
-      </li> <ul class="collapse nav nav-second-level" id="Elements">
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/ciclos' ]" class="waves-effect"><i class="fa fa-circle-o-notch  fa-fw"></i> Ciclos</a>
+
+        <li data-toggle="collapse" href="#Elements"> <a class="waves-effect"><i class=" fa fa-gear fa-fw"></i>
+            Administracion<span class="fa arrow"></span> </a>
+        </li>
+        <ul class="collapse nav nav-second-level" id="Elements">
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/ciclos' ]" class="waves-effect"><i
+                class="fa fa-circle-o-notch  fa-fw"></i> Ciclos</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/jornadas' ]" class="waves-effect"><i class="wi wi-day-cloudy fa-fw fa-fw"></i> Jornadas</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/jornadas' ]" class="waves-effect"><i
+                class="wi wi-day-cloudy fa-fw fa-fw"></i> Jornadas</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/maestros' ]" class="waves-effect"><i class="fa fa-male fa-fw"></i> Maestros</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/maestros' ]" class="waves-effect"><i
+                class="fa fa-male fa-fw"></i> Maestros</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/grados' ]" class="waves-effect"><i class="fa fa-group fa-fw"></i> Grados</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/grados' ]" class="waves-effect"><i
+                class="fa fa-group fa-fw"></i> Grados</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/cursos' ]" class="waves-effect"><i class="fa fa-pencil-square-o fa-fw"></i> Cursos</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/cursos' ]" class="waves-effect"><i
+                class="fa fa-pencil-square-o fa-fw"></i> Cursos</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/estudiantes' ]" class="waves-effect"><i class="fa fa-child fa-fw"></i> Estudiantes</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/estudiantes' ]" class="waves-effect"><i
+                class="fa fa-child fa-fw"></i> Estudiantes</a>
           </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/tutores' ]" class="waves-effect"><i class=" ti-id-badge fa-fw"></i> Tutores</a>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/tutores' ]" class="waves-effect"><i
+                class=" ti-id-badge fa-fw"></i> Tutores</a>
           </li>
 
-        <li data-toggle="collapse" href="#Events"> <a  class="waves-effect"><i class=" fa fa-calendar fa-fw"></i> Eventos<span class="fa arrow"></span>  </a>
-          </li><ul class="collapse nav nav-third-level" id="Events">
-              <li> <a routerLinkActive="active"
-                [routerLink]="[ './admin/eventos' ]" class="waves-effect"><i class="icon-user fa-fw"></i> Eventos</a>
-              </li>
-              <li> <a routerLinkActive="active"
-                [routerLink]="[ './admin/eventos-tipo' ]" class="waves-effect"><i class="icon-user fa-fw"></i> Tipos de Eventos</a>
-              </li>
-            </ul>
-            
-            <li> <a routerLinkActive="active"
-              [routerLink]="[ './admin/cargos' ]" class="waves-effect"><i class="fa  fa-dollar fa-fw"></i> Cargos</a>
+          <li data-toggle="collapse" href="#Events"> <a class="waves-effect"><i class=" fa fa-calendar fa-fw"></i>
+              Eventos<span class="fa arrow"></span> </a>
+          </li>
+          <ul class="collapse nav nav-third-level" id="Events">
+            <li> <a routerLinkActive="active" [routerLink]="[ './admin/eventos' ]" class="waves-effect"><i
+                  class="icon-user fa-fw"></i> Eventos</a>
             </li>
-          
-        </ul>
-      
-      
-
-      <li data-toggle="collapse" href="#Assigns"> <a  class="waves-effect"><i class=" fa fa-sign-in fa-fw"></i> Asignaciones<span class="fa arrow"></span>  </a>
-      </li> <ul class="collapse nav nav-second-level" id="Assigns">
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/estudiantes-tutores' ]" class="waves-effect"><i class="fa fa-group  fa-fw"></i> Estudiantes a Tutores</a>
-          </li>
-          
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/ciclo-jornada' ]" class="waves-effect"><i class="fa fa-circle-o-notch  fa-fw"></i> Ciclos a Jornadas</a>
-          </li>
-
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/jornada-grados' ]" class="waves-effect"><i class="fa  fa-list-alt fa-fw"></i> Grados a Jornada</a>
-          </li>
-
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/grado-materias' ]" class="waves-effect"><i class="fa  fa-code-fork fa-fw"></i> Materias a Grado</a>
-          </li>
-          <li> <a routerLinkActive="active"
-            [routerLink]="[ './admin/materia-maestros' ]" class="waves-effect"><i class="fa  fa-bank fa-fw"></i> Maestros a Materia</a>
-          </li>
-
-        </ul>
-        <li data-toggle="collapse" href="#Inscriptions"> <a  class="waves-effect"><i class=" fa fa-edit fa-fw"></i> Inscripciones<span class="fa arrow"></span>  </a>
-        </li> <ul class="collapse nav nav-second-level" id="Inscriptions">
-             
-            <li> <a routerLinkActive="active"
-              [routerLink]="[ './admin/inscripcion-alumno' ]" class="waves-effect"><i class="fa  fa-users fa-fw"></i> Inscribir Alumno</a>
-            </li>
-             
-            <li> <a routerLinkActive="active"
-              [routerLink]="[ './admin/inscripcion-jornada' ]" class="waves-effect"><i class="fa  fa-users fa-fw"></i> Inscrito a Jornada</a>
+            <li> <a routerLinkActive="active" [routerLink]="[ './admin/eventos-tipo' ]" class="waves-effect"><i
+                  class="icon-user fa-fw"></i> Tipos de Eventos</a>
             </li>
           </ul>
-        
-          
-      
-    </ul>
-<!-- fin menu administrador -->
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/cargos' ]" class="waves-effect"><i
+                class="fa  fa-dollar fa-fw"></i> Cargos</a>
+          </li>
+
+        </ul>
+
+
+
+        <li data-toggle="collapse" href="#Assigns"> <a class="waves-effect"><i class=" fa fa-sign-in fa-fw"></i>
+            Asignaciones<span class="fa arrow"></span> </a>
+        </li>
+        <ul class="collapse nav nav-second-level" id="Assigns">
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/estudiantes-tutores' ]" class="waves-effect"><i
+                class="fa fa-group  fa-fw"></i> Estudiantes a Tutores</a>
+          </li>
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/ciclo-jornada' ]" class="waves-effect"><i
+                class="fa fa-circle-o-notch  fa-fw"></i> Ciclos a Jornadas</a>
+          </li>
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/jornada-grados' ]" class="waves-effect"><i
+                class="fa  fa-list-alt fa-fw"></i> Grados a Jornada</a>
+          </li>
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/grado-materias' ]" class="waves-effect"><i
+                class="fa  fa-code-fork fa-fw"></i> Materias a Grado</a>
+          </li>
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/materia-maestros' ]" class="waves-effect"><i
+                class="fa  fa-bank fa-fw"></i> Maestros a Materia</a>
+          </li>
+
+        </ul>
+        <li data-toggle="collapse" href="#Inscriptions"> <a class="waves-effect"><i class=" fa fa-edit fa-fw"></i>
+            Inscripciones<span class="fa arrow"></span> </a>
+        </li>
+        <ul class="collapse nav nav-second-level" id="Inscriptions">
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/inscripcion-alumno' ]" class="waves-effect"><i
+                class="fa  fa-users fa-fw"></i> Inscribir Alumno</a>
+          </li>
+
+          <li> <a routerLinkActive="active" [routerLink]="[ './admin/inscripcion-jornada' ]" class="waves-effect"><i
+                class="fa  fa-users fa-fw"></i> Inscrito a Jornada</a>
+          </li>
+        </ul>
+
+
+
+      </ul>
+      <!-- fin menu administrador -->
     </div>
     <!-- /.sidebar-collapse -->
-</div>
-<div id="page-wrapper">
-  <div class="container-fluid">
-<router-outlet></router-outlet>
   </div>
-</div>
-
-<div id="ChangePass"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Cambio de contraseña</h4>
-          </div>
-          <div class="modal-body">
-            <form id="passChange-form"  #passChange="ngForm" (ngSubmit)="updatePass(passChange.value)">
-              <div class="form-group col-xs-12 m-b-15">
-                    <label for="old_pass">Contraseña Actual</label>
-                    <input type="password" class="form-control" id="old_pass" name="old_pass" required
-                            ngModel #old_pass="ngModel" >
-                      <div *ngIf="old_pass.invalid && (old_pass.dirty || old_pass.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="old_pass.errors.required">
-                              La Contraseña Actual es invalida
-                          </small>
-                      </div>
-              </div>
-      
-              <div class="form-group col-xs-12 m-b-15">
-                    <label for="new_pass">Contraseña Nueva</label>
-                    <input type="password" class="form-control" id="new_pass" name="new_pass" required
-                            ngModel #new_pass="ngModel">
-                      <div *ngIf="new_pass.invalid && (new_pass.dirty || new_pass.touched)"
-                            class="alert alert-danger" role="alert">
-                          <small *ngIf="new_pass.errors.required">
-                              La Contraseña Nueva es invalida
-                          </small>
-                      </div>
-              </div>
-              <div class="form-group col-xs-12 m-b-15">
-                    <label for="new_pass2">Repita la Contraseña Nueva</label>
-                    <input type="password" class="form-control" id="new_pass2" name="new_pass2" required
-                            ngModel #new_pass2="ngModel">
-                      <div *ngIf="new_pass2.value != new_pass.value"
-                            class="alert alert-danger" role="alert">
-                          <small>
-                              Las contraseñas deben ser Iguales
-                          </small>
-                      </div>
-              </div>
-              <div class="form-group col-xs-12 text-right m-b-15">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Cambiar Contraseña</button>
-              </div>
-          </form>
-              
-          </div>
-          <div class="modal-footer" style="border:none;">
-            
-          </div>
-      </div>
-  </div>
-  
-  
-  
-</div>
-
-<div class="modal fade" id="Loading">
-  <div class="modal-dialog">
-    <div class="text-center" style="margin-top:50%;">
-<loaders-css [loader]="'line-scale'" [loaderClass]="'loader1'" ></loaders-css>
-
-      
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+
+  <div id="ChangePass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Cambio de contraseña</h4>
+        </div>
+        <div class="modal-body">
+          <form id="passChange-form" #passChange="ngForm" (ngSubmit)="updatePass(passChange.value)">
+            <div class="form-group col-xs-12 m-b-15">
+              <label for="old_pass">Contraseña Actual</label>
+              <input type="password" class="form-control" id="old_pass" name="old_pass" required ngModel
+                #old_pass="ngModel">
+              <div *ngIf="old_pass.invalid && (old_pass.dirty || old_pass.touched)" class="alert alert-danger"
+                role="alert">
+                <small *ngIf="old_pass.errors.required">
+                  La Contraseña Actual es invalida
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group col-xs-12 m-b-15">
+              <label for="new_pass">Contraseña Nueva</label>
+              <input type="password" class="form-control" id="new_pass" name="new_pass" required ngModel
+                #new_pass="ngModel">
+              <div *ngIf="new_pass.invalid && (new_pass.dirty || new_pass.touched)" class="alert alert-danger"
+                role="alert">
+                <small *ngIf="new_pass.errors.required">
+                  La Contraseña Nueva es invalida
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-xs-12 m-b-15">
+              <label for="new_pass2">Repita la Contraseña Nueva</label>
+              <input type="password" class="form-control" id="new_pass2" name="new_pass2" required ngModel
+                #new_pass2="ngModel">
+              <div *ngIf="new_pass2.value != new_pass.value" class="alert alert-danger" role="alert">
+                <small>
+                  Las contraseñas deben ser Iguales
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-xs-12 text-right m-b-15">
+              <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Cambiar Contraseña</button>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer" style="border:none;">
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="modal fade" id="Loading">
+    <div class="modal-dialog">
+      <div class="text-center" style="margin-top:50%;">
+        <loaders-css [loader]="'line-scale'" [loaderClass]="'loader1'"></loaders-css>
+
+
+      </div>
+    </div>
+  </div>

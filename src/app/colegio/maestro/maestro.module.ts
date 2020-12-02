@@ -13,7 +13,7 @@ import { CursoAlumnosComponent } from './curso-alumnos/curso-alumnos.component';
 import { AsistenciaComponent } from './asistencia/asistencia.component';
 import { LoaderComponent } from "./loader/loader.component";
 
-import {CalendarModule} from "ap-angular2-fullcalendar";
+import { CalendarModule } from "ap-angular2-fullcalendar";
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -30,29 +30,33 @@ import { NotificacionesService } from './_services/notificaciones.service';
 import { TeachersService } from '../admin/_services/teachers.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosService } from './../admin/_services/usuarios.service';
+import { DigibooksComponent } from './digibooks/digibooks.component';
+import { ComponentesModule } from './../componentes/componentes.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    DataTableModule, 
+    DataTableModule,
     ChartsModule,
-    SimpleNotificationsModule.forRoot(),  
-    Ng2SearchPipeModule, 
+    SimpleNotificationsModule.forRoot(),
+    Ng2SearchPipeModule,
     Ng2DragDropModule.forRoot(),
-    LoadersCssModule,  
+    LoadersCssModule,
+    ComponentesModule,
     CalendarModule,
     MaestroRoutingModule
   ],
   declarations: [
-    MaestroComponent, 
-    DashboardComponent, 
-    CursosComponent, 
-    DetalleAlumnoComponent, 
-    TareasComponent, 
-    CursoAlumnosComponent, 
+    MaestroComponent,
+    DashboardComponent,
+    CursosComponent,
+    DetalleAlumnoComponent,
+    TareasComponent,
+    CursoAlumnosComponent,
     AsistenciaComponent,
     LoaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    DigibooksComponent
   ],
   providers: [
     EventsService,
