@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { DataTableModule } from "angular2-datatable";
+import { FormsModule } from '@angular/forms';
+import { DataTableModule } from 'angular2-datatable';
 
 import { TutorRoutingModule } from './tutor.routing';
 import { TutorComponent } from './tutor.component';
