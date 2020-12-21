@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'cursos/:op', component: CursosComponent },
       { path: 'curso-alumnos/:id/:name', component: CursoAlumnosComponent },
       { path: 'tareas/:id/:name', component: TareasComponent },
+      { path: 'digibooks/:id', component: DigibooksComponent },
       { path: 'detalle-alumno/:id/:name', component: DetalleAlumnoComponent },
       { path: 'digibooks', component: DigibooksComponent },
       { path: 'asistencia/:id/:name', component: AsistenciaComponent },
