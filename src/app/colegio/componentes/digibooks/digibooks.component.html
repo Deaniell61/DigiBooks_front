@@ -1,3 +1,19 @@
-<p>
-  digibooks component works!
-</p>
+<ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist" *ngIf="esAdmin">
+  <li class="nav-item" [ngClass]="{'active': selected == 1}" >
+    <a class="nav-link" id="pills-list-tab" data-toggle="pill" href="#pills-list" role="tab" aria-controls="pills-list" aria-selected="true" (click)="cambiarTab(1)">Libros</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active': selected == 2}" >
+    <a class="nav-link" id="pills-create-tab" data-toggle="pill" href="#pills-create" role="tab" aria-controls="pills-create" aria-selected="false" (click)="cambiarTab(2)">Crear Libro</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active in" *ngIf="selected == 1" [ngClass]="{'show active in': selected == 1, 'hidde': selected != 1}" id="pills-list" role="tabpanel" aria-labelledby="pills-list-tab">
+    <app-lista-libros [esAdmin]="esAdmin" (cambiar)="cambiarTab($event)" (obtenerLibro)="obtenerLibro($event)"></app-lista-libros>
+  </div>
+  <div class="tab-pane fade" *ngIf="esAdmin && selected == 2" [ngClass]="{'show active in': selected == 2, 'hidde': selected != 2}" id="pills-create" role="tabpanel" aria-labelledby="pills-create-tab">
+    <app-crear-libro (cambiar)="cambiarTab($event)"  [libroId]="libroId"></app-crear-libro>
+  </div>
+  <div class="tab-pane fade" *ngIf="!esAdmin && selected == 2" [ngClass]="{'show active in': selected == 2, 'hidde': selected != 2}" id="pills-create" role="tabpanel" aria-labelledby="pills-create-tab">
+    <app-detalle-libro (cambiar)="cambiarTab($event)" [libroId]="libroId"></app-detalle-libro>
+  </div>
+</div>

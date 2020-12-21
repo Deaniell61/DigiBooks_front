@@ -1,0 +1,7 @@
+<div class="row">
+  <div *ngFor="let imagen of list" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" style="height:250px;">
+    <button *ngIf="esAdmin" type="button" class="close" aria-hidden="true" (click)="delete(imagen.id)">×</button>
+    <h3 style="position: absolute;">{{ imagen.name }}</h3>
+    <img [src]="imagen.file" (click)="editar(imagen)" class="w-100 h-auto m-auto hm-100 pointer">
+  </div>
+</div>

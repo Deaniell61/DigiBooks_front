@@ -1,0 +1,41 @@
+<div class="row text-center">
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 my-2">
+    <button type="button" class="btn btn-default" (click)="regresar()">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+  </div>
+  <div class="col-xs-8 text-center col-sm-8 col-md-8 col-lg-8 my-2" *ngIf="libro">
+    <input type="text" class="form-control" [disabled]="libro.pages.length > 0" id="name" name="name" required ngModel
+      #name="ngModel" [(ngModel)]="libro.name">
+  </div>
+  <div class="col-md-12">
+    <div class="box box-solid">
+      <div class="box-body">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" *ngIf="libro && libro.file!=null">
+          <div class="carousel-inner" style="height: 700px!important;">
+            <div class="item" [class.active]="i==active" *ngFor="let imagen of libro.pages; let i = index">
+              <img [src]="imagen.url ? imagen.url : imagen.file" alt="First slide" class="w-100 h-auto m-auto hm-100">
+              <div class="carousel-caption">
+                {{i}}
+              </div>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="fa fa-angle-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="fa fa-angle-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <div class="row f-none px-2" *ngIf="libro && libro.file!=null">
+    <div *ngFor="let imagen of libro.pages; let i = index" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" style="height:250px;">
+      <img [src]="imagen.file" class="w-100 h-auto m-auto hm-100 pointer" (click)="seleccionar(i)" >
+    </div>
+  </div>
+</div>
+<simple-notifications [options]="options"></simple-notifications>
