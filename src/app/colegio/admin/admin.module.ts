@@ -54,7 +54,9 @@ import { ChargesService } from './_services/charges.service';
 import { LoaderComponent } from './loader/loader.component';
 import { CargosComponent } from './cargos/cargos.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DigibooksComponent } from './digibooks/digibooks.component';
 
+import { ComponentesModule } from './../componentes/componentes.module';
 
 @NgModule({
   imports: [
@@ -65,6 +67,7 @@ import { ProfileComponent } from './profile/profile.component';
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
     Ng2DragDropModule.forRoot(),
+    ComponentesModule,
     LoadersCssModule,
     AdminRoutingModule
   ],
@@ -90,7 +93,9 @@ import { ProfileComponent } from './profile/profile.component';
     EventosTipoComponent,
     InscribirAlumnoComponent,
     InscripcionJornadaComponent,
-    CargosComponent, ProfileComponent
+    CargosComponent,
+    ProfileComponent,
+    DigibooksComponent
   ],
   providers: [
     UsuariosService,

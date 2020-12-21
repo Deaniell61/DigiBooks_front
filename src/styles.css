@@ -106,3 +106,47 @@ However, delay the fade out process for 2.5 seconds */
 .another-file-over-class {
   border: dotted 3px green;
 }
+
+.w-100 {
+  width: 100%!important;
+}
+
+.f-none {
+  float: none!important;
+}
+
+.my-2 {
+  margin-top: 2rem!important;
+  margin-bottom: 2rem!important;
+}
+
+.hm-100 {
+  max-height: 100%!important;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+}
+
+.px-2 {
+  padding-left: 2rem!important;
+  padding-right: 2rem!important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.ml-auto {
+  margin-left: auto!important;
+}
+
+.mr-auto {
+  margin-right: auto!important;
+}
+
+.over{
+  overflow-x: scroll;
+  height: 10rem;
+}

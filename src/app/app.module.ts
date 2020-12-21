@@ -9,6 +9,7 @@ import { HomeGuard } from './_guards/home.guard';
 import { LoadersCssModule } from 'angular2-loaders-css';
 
 import { AuthService } from './_services/auth.service';
+import { BooksService } from './_services/books.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -36,7 +37,8 @@ import { RecoveryComponent } from './recovery/recovery.component';
   providers: [
     AuthGuard,
     HomeGuard,
-    AuthService
+    AuthService,
+    BooksService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
